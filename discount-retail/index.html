@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Discount Philosophy — ALDI & Trader Joe's</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Page-specific styles — shared styles in styles.css */
+
+  :root {
+    --bg: #F8F5EF;
+    --bg-dark: #111110;
+    --bg-card: #FFFFFF;
+    --bg-card-alt: #F2EDE4;
+    --accent: #2A5A7A;
+    --aldi-red: #C83C2C;
+    --aldi-red-glow: rgba(200,60,44,0.08);
+    --tj-orange: #D4623B;
+    --tj-orange-glow: rgba(212,98,59,0.08);
+    --shared-blue: #2A5A7A;
+    --shared-blue-glow: rgba(42,90,122,0.08);
+    --agency-green: #2D6A4F;
+    --agency-green-glow: rgba(45,106,79,0.08);
+  }
+
+  body {
+    background: var(--bg);
+  }
+
+  /* ── HERO (page-specific) ── */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(200,60,44,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 40%, rgba(212,98,59,0.2) 0%, transparent 55%);
+  }
+
+  .hero h1 {
+    line-height: 1.0;
+  }
+
+  .hero h1 em {
+    font-size: 0.55em;
+    line-height: 1.4;
+    margin-top: 0.5em;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    max-width: 550px;
+  }
+
+  .hero-books {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.2rem 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .hero-book:hover {
+    border-color: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.03);
+    transform: translateY(-2px);
+  }
+
+  .hero-book-cover {
+    max-height: 140px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-book.aldi .hero-book-cover { transform: rotate(-1.5deg); }
+  .hero-book.tj .hero-book-cover { transform: rotate(1.5deg); }
+  .hero-book:hover .hero-book-cover { transform: rotate(0deg) scale(1.04); }
+
+  .hero-book-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .hero-book-author {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    font-weight: 300;
+  }
+
+  .hero-book-tag {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .hero-book.aldi .hero-book-tag {
+    color: var(--aldi-red);
+    background: var(--aldi-red-glow);
+  }
+
+  .hero-book.tj .hero-book-tag {
+    color: var(--tj-orange);
+    background: var(--tj-orange-glow);
+  }
+
+  .hero-prepared {
+    margin-top: 4rem;
+  }
+
+
+  /* ── CONNECTION STORY ── */
+  .timeline-story {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-story-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-story p {
+    font-size: 0.92rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-story p:last-child { margin-bottom: 0; }
+
+  .timeline-story strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── RETAILER CARDS ── */
+  .retailer-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .retailer-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .retailer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+
+  .retailer-card-cover {
+    max-height: 120px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .retailer-card-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .retailer-card.aldi .retailer-card-eyebrow { color: var(--aldi-red); }
+  .retailer-card.tj .retailer-card-eyebrow { color: var(--tj-orange); }
+  .retailer-card.agency .retailer-card-eyebrow { color: var(--agency-green); }
+
+  .retailer-card-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .retailer-card-author {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .retailer-card-desc {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .retailer-card-stats {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .retailer-card-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .retailer-card-stat-num {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .retailer-card-stat-label {
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+
+  .retailer-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: gap 0.2s;
+  }
+
+  .retailer-card.aldi .retailer-card-cta { color: var(--aldi-red); }
+  .retailer-card.tj .retailer-card-cta { color: var(--tj-orange); }
+  .retailer-card.agency .retailer-card-cta { color: var(--agency-green); }
+  .retailer-card:hover .retailer-card-cta { gap: 0.7rem; }
+
+  /* ── COMPARISON TABLE ── */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+    font-size: 0.85rem;
+  }
+
+  .comparison-table th {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 1rem 1.2rem;
+    border-bottom: 2px solid var(--ink);
+    font-weight: 500;
+    color: var(--ink-faint);
+  }
+
+  .comparison-table th:nth-child(2) { color: var(--aldi-red); }
+  .comparison-table th:nth-child(3) { color: var(--tj-orange); }
+
+  .comparison-table td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--ink-light);
+  }
+
+  .comparison-table td:first-child {
+    font-weight: 400;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .comparison-table tr:last-child td { border-bottom: none; }
+
+  /* ── SHARED PRINCIPLES ── */
+  .shared-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .shared-card {
+    background: var(--bg-card);
+    padding: 1.8rem;
+    transition: background 0.2s;
+  }
+
+  .shared-card:hover { background: var(--bg-card-alt); }
+
+  .shared-card-num {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: var(--shared-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .shared-card-title {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .shared-card-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .shared-card-sources {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .source-tag {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+
+  .source-tag.aldi { color: var(--aldi-red); background: var(--aldi-red-glow); }
+  .source-tag.tj { color: var(--tj-orange); background: var(--tj-orange-glow); }
+
+  /* ── DIVERGENCE ── */
+  .divergence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .divergence-col {
+    padding-top: 1rem;
+    border-top: 3px solid;
+  }
+
+  .divergence-col.aldi { border-color: var(--aldi-red); }
+  .divergence-col.tj { border-color: var(--tj-orange); }
+
+  .divergence-col-title {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .divergence-col.aldi .divergence-col-title { color: var(--aldi-red); }
+  .divergence-col.tj .divergence-col-title { color: var(--tj-orange); }
+
+  .divergence-item {
+    margin-bottom: 1.2rem;
+  }
+
+  .divergence-item-title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  .divergence-item-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .dual-quote {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .dual-quote-card {
+    padding: 1.8rem;
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .dual-quote-card.aldi {
+    background: var(--aldi-red-glow);
+    border-left: 3px solid var(--aldi-red);
+  }
+
+  .dual-quote-card.tj {
+    background: var(--tj-orange-glow);
+    border-left: 3px solid var(--tj-orange);
+  }
+
+  .dual-quote-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+  }
+
+  .dual-quote-source {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .dual-quote-card.aldi .dual-quote-source { color: var(--aldi-red); }
+  .dual-quote-card.tj .dual-quote-source { color: var(--tj-orange); }
+
+  /* ── BIG QUOTE ── */
+  .big-quote {
+    background: var(--bg-dark);
+    color: #F2EDE4;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 0 -2rem;
+    border-radius: 0;
+  }
+
+  .big-quote-text {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+
+  .big-quote-source {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* ── FOOTER (override) ── */
+  .footer-nav a:hover {
+    border-color: var(--shared-blue);
+    color: var(--shared-blue);
+  }
+
+  /* ── RESPONSIVE ── */
+  .retailer-cards:has(:nth-child(3)) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 960px) {
+    .retailer-cards:has(:nth-child(3)) { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .retailer-cards { grid-template-columns: 1fr; }
+    .shared-grid { grid-template-columns: 1fr; }
+    .divergence-grid { grid-template-columns: 1fr; }
+    .dual-quote { grid-template-columns: 1fr; }
+    .hero-books { flex-direction: column; gap: 1rem; }
+    .comparison-table { font-size: 0.78rem; }
+    .comparison-table td:first-child { white-space: normal; }
+    .hero-book { padding: 1rem 1.5rem; }
+    .timeline-story { padding: 1.8rem 1.5rem; }
+    .shared-card { padding: 1.4rem; }
+    .dual-quote-card { padding: 1.4rem; }
+  }
+
+  /* Table scroll wrapper */
+  .table-scroll-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 2.5rem;
+  }
+
+  .table-scroll-wrap .comparison-table {
+    margin-bottom: 0;
+    min-width: 500px;
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-brand">The Discount Philosophy</a>
+    <div class="site-nav-links">
+      <a href="index.html" class="active">Overview</a>
+      <a href="bare-essentials-aldi.html">ALDI</a>
+      <a href="becoming-trader-joe.html">Trader Joe&rsquo;s</a>
+      <a href="agency-lessons.html">Agencies</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Reading Lessons</div>
+  <h1>The Discount Philosophy<em>Two books. Two retailers. One family. What they agree on about simplicity, value, and the customer.</em></h1>
+  <p class="hero-sub">ALDI and Trader Joe&rsquo;s are the two most admired grocers in the world. They&rsquo;re also family, connected by ownership and philosophy. These are the lessons from reading both founders&rsquo; playbooks.</p>
+
+  <div class="hero-books">
+    <a href="bare-essentials-aldi.html" class="hero-book aldi">
+      <img src="bare-essentials-aldi-way.jpg" alt="Bare Essentials cover" class="hero-book-cover">
+      <div class="hero-book-title">Bare Essentials</div>
+      <div class="hero-book-author">Brandes & Brandes</div>
+      <div class="hero-book-tag">ALDI</div>
+    </a>
+    <a href="becoming-trader-joe.html" class="hero-book tj">
+      <img src="becoming-trader-joe-cover.jpg" alt="Becoming Trader Joe cover" class="hero-book-cover">
+      <div class="hero-book-title">Becoming Trader Joe</div>
+      <div class="hero-book-author">Joe Coulombe</div>
+      <div class="hero-book-tag">Trader Joe&rsquo;s</div>
+    </a>
+  </div>
+
+  <div class="hero-prepared"><a href="https://peterkang.com" target="_blank">Prepared by Peter Kang</a></div>
+</section>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ═══ THE TWO RETAILERS ═══ -->
+  <section class="section" id="retailers">
+    <div class="section-eyebrow fade-up">The Two Retailers</div>
+    <h2 class="section-title fade-up">Same family, different philosophies</h2>
+    <p class="section-lead fade-up">Both are obsessed with value, simplicity, and the customer. They get there differently. ALDI through monastic discipline and elimination. Trader Joe&rsquo;s through product knowledge and cultural connection.</p>
+
+    <div class="retailer-cards fade-up">
+      <a href="bare-essentials-aldi.html" class="retailer-card aldi">
+        <img src="bare-essentials-aldi-way.jpg" alt="Bare Essentials cover" class="retailer-card-cover">
+        <div class="retailer-card-eyebrow">Book 01</div>
+        <div class="retailer-card-title">Bare Essentials</div>
+        <div class="retailer-card-author">Nils Brandes & Dieter Brandes</div>
+        <div class="retailer-card-desc">How ALDI&rsquo;s management philosophy works at the level of daily decisions. Spartan, systematic, obsessed with cutting costs.</div>
+        <div class="retailer-card-stats">
+          <div class="retailer-card-stat">
+            <div class="retailer-card-stat-num">~600</div>
+            <div class="retailer-card-stat-label">SKUs</div>
+          </div>
+          <div class="retailer-card-stat">
+            <div class="retailer-card-stat-num">1946</div>
+            <div class="retailer-card-stat-label">Founded</div>
+          </div>
+          <div class="retailer-card-stat">
+            <div class="retailer-card-stat-num">10,000+</div>
+            <div class="retailer-card-stat-label">Stores</div>
+          </div>
+        </div>
+        <div class="retailer-card-cta">Read analysis &rarr;</div>
+      </a>
+      <a href="becoming-trader-joe.html" class="retailer-card tj">
+        <img src="becoming-trader-joe-cover.jpg" alt="Becoming Trader Joe cover" class="retailer-card-cover">
+        <div class="retailer-card-eyebrow">Book 02</div>
+        <div class="retailer-card-title">Becoming Trader Joe</div>
+        <div class="retailer-card-author">Joe Coulombe</div>
+        <div class="retailer-card-desc">Joe Coulombe&rsquo;s own account of building Trader Joe&rsquo;s from scratch. Idiosyncratic, literary, obsessed with product knowledge and people.</div>
+        <div class="retailer-card-stats">
+          <div class="retailer-card-stat">
+            <div class="retailer-card-stat-num">~1,500</div>
+            <div class="retailer-card-stat-label">SKUs</div>
+          </div>
+          <div class="retailer-card-stat">
+            <div class="retailer-card-stat-num">1967</div>
+            <div class="retailer-card-stat-label">Founded</div>
+          </div>
+          <div class="retailer-card-stat">
+            <div class="retailer-card-stat-num">560+</div>
+            <div class="retailer-card-stat-label">Stores</div>
+          </div>
+        </div>
+        <div class="retailer-card-cta">Read analysis &rarr;</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ THE CONNECTION ═══ -->
+  <section class="section" id="connection">
+    <div class="section-eyebrow fade-up">The Connection</div>
+    <h2 class="section-title fade-up">Why these two books belong together</h2>
+
+    <div class="timeline-story fade-up">
+      <div class="timeline-story-title">The Albrecht acquisition</div>
+      <p>In <strong>1979</strong>, Theo Albrecht, co-founder of ALDI Nord, quietly purchased Trader Joe&rsquo;s from Joe Coulombe. The sale was barely publicized. Most customers still don&rsquo;t know the connection.</p>
+      <p><strong>Albrecht left Trader Joe&rsquo;s alone.</strong> He didn&rsquo;t impose ALDI&rsquo;s systems or aesthetics. Trader Joe&rsquo;s had already arrived at many of the same principles on its own: limited assortment, private label dominance, high wages, small stores. Just through a completely different cultural expression. German monastic discipline and Californian literary irreverence, solving the same problem differently.</p>
+      <p>Read both books together and the pattern is clear. <strong>ALDI is the philosophy articulated as a system. Trader Joe&rsquo;s is the philosophy articulated as a personality.</strong> The principles are shared. The expression is opposite.</p>
+    </div>
+
+    <div class="dual-quote fade-up">
+      <div class="dual-quote-card aldi">
+        <div class="dual-quote-text">&ldquo;Not a single cent must be wasted. Each employee can be proud if he has succeeded in contributing to this goal. This requires daily detailed work, daily rethinking, daily improvements.&rdquo;</div>
+        <div class="dual-quote-source">Bare Essentials</div>
+      </div>
+      <div class="dual-quote-card tj">
+        <div class="dual-quote-text">&ldquo;All businesses have problems. It&rsquo;s the problems that create the opportunities. If a business is easy, every simple bastard would enter it.&rdquo;</div>
+        <div class="dual-quote-source">Becoming Trader Joe</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHERE THEY ALIGN ═══ -->
+  <section class="section" id="alignment">
+    <div class="section-eyebrow fade-up">Where They Align</div>
+    <h2 class="section-title fade-up">Shared principles across both books</h2>
+    <p class="section-lead fade-up">The cultures look nothing alike. The underlying principles are nearly identical. These show up in both books, arrived at independently.</p>
+
+    <div class="shared-grid fade-up">
+      <div class="shared-card">
+        <div class="shared-card-num">01</div>
+        <div class="shared-card-title">Limited assortment is a competitive weapon</div>
+        <div class="shared-card-desc">ALDI carries ~600 SKUs. TJ&rsquo;s carries ~1,500. Neither tries to be complete. Fewer items means better quality, better prices, faster decisions, and a clearer identity.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">02</div>
+        <div class="shared-card-title">Private label as the core strategy</div>
+        <div class="shared-card-desc">Both walked away from branded merchandise. That gives them control over quality, pricing, and margin. It also makes price comparison impossible for competitors.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">03</div>
+        <div class="shared-card-title">Small, autonomous stores</div>
+        <div class="shared-card-desc">ALDI decentralizes into regional units. TJ&rsquo;s treats each store as a &ldquo;chunk&rdquo; run by a highly-paid Captain with real discretion. Both believe small units outperform large ones.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">04</div>
+        <div class="shared-card-title">Outsource everything except the core job</div>
+        <div class="shared-card-desc">ALDI has no marketing, consulting, or controlling departments. TJ&rsquo;s sold off maintenance, real estate, and computing. Both focus only on buying and selling.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">05</div>
+        <div class="shared-card-title">Simplicity over sophistication</div>
+        <div class="shared-card-desc">Both cite Peters/Waterman&rsquo;s &ldquo;In Search of Excellence.&rdquo; Both reject complex systems. ALDI calls it KISS. Coulombe calls it conceptual integrity. Same idea. Coherence beats comprehensiveness.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">06</div>
+        <div class="shared-card-title">Never price-match; set the market</div>
+        <div class="shared-card-desc">ALDI lowers prices offensively before competitors force them to. TJ&rsquo;s calls price-matching &ldquo;intellectually feeble.&rdquo; Both price from conviction, not reaction.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">07</div>
+        <div class="shared-card-title">Quality is non-negotiable</div>
+        <div class="shared-card-desc">ALDI benchmarks against leading brands. TJ&rsquo;s visits factories and employs dedicated QC people. Low price without quality is a race to zero. Both know this.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">08</div>
+        <div class="shared-card-title">Trial and error over analysis</div>
+        <div class="shared-card-desc">ALDI tests in 3 stores before rolling out. TJ&rsquo;s ran on the principle of discontinuity: try, learn, pivot. Both prefer action to planning.</div>
+        <div class="shared-card-sources"><span class="source-tag aldi">ALDI</span><span class="source-tag tj">TJ&rsquo;s</span></div>
+      </div>
+    </div>
+
+    <div class="dual-quote fade-up">
+      <div class="dual-quote-card aldi">
+        <div class="dual-quote-text">&ldquo;ALDI people are doers. Everything is tried out, as fast as possible. They don&rsquo;t get tied down in endless, in-depth analysis.&rdquo;</div>
+        <div class="dual-quote-source">Bare Essentials</div>
+      </div>
+      <div class="dual-quote-card tj">
+        <div class="dual-quote-text">&ldquo;Trying to find an optimum solution in business is a waste of time: the factors in the equation are changing all the time.&rdquo;</div>
+        <div class="dual-quote-source">Becoming Trader Joe</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHERE THEY DIFFER ═══ -->
+  <section class="section" id="differences">
+    <div class="section-eyebrow fade-up">Where They Differ</div>
+    <h2 class="section-title fade-up">Same principles, opposite expressions</h2>
+    <p class="section-lead fade-up">Both succeed wildly, but their cultural expressions are almost inverted. The principles transfer. The style does not.</p>
+
+    <div class="table-scroll-wrap">
+    <table class="comparison-table fade-up">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>ALDI</th>
+          <th>Trader Joe&rsquo;s</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>People philosophy</td>
+          <td>Delegate duties, control through random audits. Org design compensates for mediocre leaders.</td>
+          <td>Pay people more than anyone. Attract the best. Trust their judgment. &ldquo;You can&rsquo;t afford cheap employees.&rdquo;</td>
+        </tr>
+        <tr>
+          <td>Customer relationship</td>
+          <td>Anonymous. No PR, no publicity. Let the price speak. &ldquo;ALDI is low-price.&rdquo; No theater needed.</td>
+          <td>Literary conspiracy. Fearless Flyer, witty product names, inside jokes. &ldquo;We always looked up to the customers.&rdquo;</td>
+        </tr>
+        <tr>
+          <td>Product knowledge</td>
+          <td>Minimal. The buyer&rsquo;s job is to get the lowest price from reliable suppliers. Product is commodity.</td>
+          <td>Central. &ldquo;The greatest departure from the norm was our commitment to product knowledge.&rdquo; Buyers run the company.</td>
+        </tr>
+        <tr>
+          <td>Brand personality</td>
+          <td>None. Deliberately faceless. No founders in public. Ascetic. &ldquo;People live more on what they do not eat.&rdquo;</td>
+          <td>Maximally expressive. Hawaiian shirts, nautical theme, Heisenberg&rsquo;s Uncertain Blend. Fun as strategy.</td>
+        </tr>
+        <tr>
+          <td>Growth approach</td>
+          <td>Systematic replication. Same format, same items, same layout. Scale through uniformity.</td>
+          <td>&ldquo;Few stores, far apart, high volume.&rdquo; Grow by making existing stores sell more, not by opening more.</td>
+        </tr>
+        <tr>
+          <td>Decision-making style</td>
+          <td>Collective. General Manager&rsquo;s Conference. No individual hero-worship. System over individual.</td>
+          <td>Founder-driven. White papers, personal conviction, &ldquo;tenacity over brilliance.&rdquo; Individual over system.</td>
+        </tr>
+        <tr>
+          <td>Communication</td>
+          <td>Minimize it. Good structure eliminates the need for coordination. Fewer meetings = better org design.</td>
+          <td>Maximize clarity. White papers, General Patton&rsquo;s maxim (&ldquo;the danger is your own troops won&rsquo;t know the plan&rdquo;).</td>
+        </tr>
+        <tr>
+          <td>Data & statistics</td>
+          <td>Deliberately few. &ldquo;When there are fewer statistics, managers are compelled to reflect.&rdquo;</td>
+          <td>Few but differently: profit per SKU, sales per square foot. Each item is a profit center with hard numbers.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="divergence-grid fade-up">
+      <div class="divergence-col aldi">
+        <div class="divergence-col-title">The ALDI Way</div>
+        <div class="divergence-item">
+          <div class="divergence-item-title">System compensates for people</div>
+          <div class="divergence-item-desc">Good organization offsets poor leadership. Small units limit the blast radius. The system works even with imperfect humans.</div>
+        </div>
+        <div class="divergence-item">
+          <div class="divergence-item-title">Asceticism as culture</div>
+          <div class="divergence-item-desc">The &ldquo;doing-without checklist&rdquo; is almost spiritual. No luxuries, no appearances, no theater. The store is logistics expressed as space.</div>
+        </div>
+        <div class="divergence-item">
+          <div class="divergence-item-title">Cost is the religion</div>
+          <div class="divergence-item-desc">Every decision filters through one question: &ldquo;is this the lowest cost way?&rdquo; The customer benefits as a byproduct of that obsession.</div>
+        </div>
+      </div>
+      <div class="divergence-col tj">
+        <div class="divergence-col-title">The Trader Joe&rsquo;s Way</div>
+        <div class="divergence-item">
+          <div class="divergence-item-title">People compensate for system</div>
+          <div class="divergence-item-desc">Pay the best wages. Hire the smartest people. Trust their judgment. The people are the system. &ldquo;Good people pay by their extra productivity.&rdquo;</div>
+        </div>
+        <div class="divergence-item">
+          <div class="divergence-item-title">Knowledge as culture</div>
+          <div class="divergence-item-desc">Product knowledge, literary references, intellectual curiosity. The store is a treasure hunt for the curious mind.</div>
+        </div>
+        <div class="divergence-item">
+          <div class="divergence-item-title">Value is the religion</div>
+          <div class="divergence-item-desc">Value = quality &times; uniqueness &divide; price. Every item must be &ldquo;outstanding in price or uniqueness.&rdquo; The customer benefits because they&rsquo;re the point.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG QUOTE -->
+  <div class="big-quote fade-up">
+    <div class="big-quote-text">&ldquo;A distribution system can be watched, analyzed and copied. Such a fanatic quality policy, however, requires a specific corporate culture &mdash; and this requires people who think, feel and act accordingly.&rdquo;</div>
+    <div class="big-quote-source">Bare Essentials &middot; on why ALDI can&rsquo;t be copied (and neither can Trader Joe&rsquo;s)</div>
+  </div>
+
+  <!-- ═══ META TAKEAWAYS ═══ -->
+  <section class="section" id="takeaways">
+    <div class="section-eyebrow fade-up">Synthesis</div>
+    <h2 class="section-title fade-up">What resonates across both books</h2>
+    <p class="section-lead fade-up">Both retailers confirm these lessons independently. When two very different cultures arrive at the same truth through different paths, it&rsquo;s worth paying attention.</p>
+
+    <div class="shared-grid fade-up">
+      <div class="shared-card">
+        <div class="shared-card-num">01</div>
+        <div class="shared-card-title">Constraints unlock performance</div>
+        <div class="shared-card-desc">Both chose fewer products, smaller stores, and narrower scope. Both outperformed competitors with 10x the resources. Constraints force creativity, quality, and decisiveness.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">02</div>
+        <div class="shared-card-title">You can&rsquo;t copy a culture</div>
+        <div class="shared-card-desc">Both books say the same thing: you can study the systems, but you can&rsquo;t transplant the culture. Competitors copy the format without embodying the philosophy. It doesn&rsquo;t work.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">03</div>
+        <div class="shared-card-title">The customer pays for everything</div>
+        <div class="shared-card-desc">Every cost, every salary, every overhead item is funded by customer purchases. Both founders never lost sight of this. They built everything backward from it.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">04</div>
+        <div class="shared-card-title">Simplicity is speed</div>
+        <div class="shared-card-desc">Both retailers move faster than competitors because they&rsquo;re simpler. Fewer layers, fewer approvals, fewer products to manage. Complexity is a tax on growth.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">05</div>
+        <div class="shared-card-title">Small beats large when talent is empowered</div>
+        <div class="shared-card-desc">ALDI&rsquo;s decentralized units and TJ&rsquo;s store Captains are the same idea. Give small groups real authority and they outperform centralized bureaucracies.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">06</div>
+        <div class="shared-card-title">Eliminate before you optimize</div>
+        <div class="shared-card-desc">ALDI&rsquo;s &ldquo;doing-without checklist&rdquo; and TJ&rsquo;s &ldquo;sell the mail room&rdquo; philosophy are the same. Remove entire functions rather than making them efficient.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">07</div>
+        <div class="shared-card-title">Real value doesn&rsquo;t need advertising</div>
+        <div class="shared-card-desc">ALDI spends 0.1% on advertising. TJ&rsquo;s built loyalty through the Fearless Flyer, which costs almost nothing. When the value is real, word-of-mouth does the work.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">08</div>
+        <div class="shared-card-title">Strategy is character</div>
+        <div class="shared-card-desc">Both books say strategy and personality are inseparable. ALDI: &ldquo;strategy and character are intractably intertwined.&rdquo; Coulombe: tenacity matters more than brilliance. You can only execute strategies that match who you are.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">09</div>
+        <div class="shared-card-title">Never compete on someone else&rsquo;s terms</div>
+        <div class="shared-card-desc">ALDI doesn&rsquo;t try to be a supermarket. TJ&rsquo;s doesn&rsquo;t try to be a gourmet shop. Both win by refusing to play the game their competitors are playing.</div>
+      </div>
+      <div class="shared-card">
+        <div class="shared-card-num">10</div>
+        <div class="shared-card-title">The front line knows what&rsquo;s wrong</div>
+        <div class="shared-card-desc">ALDI executives shop their own stores anonymously. Coulombe gave every employee a six-month interview. Both built systems to hear what the people closest to the work already know.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPLORE ═══ -->
+  <section class="section" id="explore">
+    <div class="section-eyebrow fade-up">Go Deeper</div>
+    <h2 class="section-title fade-up">Explore each analysis</h2>
+
+    <div class="retailer-cards fade-up">
+      <a href="bare-essentials-aldi.html" class="retailer-card aldi">
+        <img src="bare-essentials-aldi-way.jpg" alt="Bare Essentials cover" class="retailer-card-cover">
+        <div class="retailer-card-eyebrow">58 Highlights &middot; 16 Themes</div>
+        <div class="retailer-card-title">Bare Essentials: The ALDI Way</div>
+        <div class="retailer-card-desc">The management philosophy behind the world&rsquo;s most profitable grocer. Ascetic, systematic, relentless about simplicity.</div>
+        <div class="retailer-card-cta">Read the full analysis &rarr;</div>
+      </a>
+      <a href="becoming-trader-joe.html" class="retailer-card tj">
+        <img src="becoming-trader-joe-cover.jpg" alt="Becoming Trader Joe cover" class="retailer-card-cover">
+        <div class="retailer-card-eyebrow">73 Highlights &middot; 17 Themes</div>
+        <div class="retailer-card-title">Becoming Trader Joe</div>
+        <div class="retailer-card-desc">How Coulombe built a retailer through product knowledge, overpaying employees, and intellectual curiosity.</div>
+        <div class="retailer-card-cta">Read the full analysis &rarr;</div>
+      </a>
+      <a href="agency-lessons.html" class="retailer-card agency">
+        <div class="retailer-card-eyebrow">10 Lessons &middot; Applied</div>
+        <div class="retailer-card-title">Lessons for Agencies</div>
+        <div class="retailer-card-desc">What discount retail philosophy can teach service businesses about focus, talent, pricing, and the holdco structure.</div>
+        <div class="retailer-card-cta">Read the agency application &rarr;</div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="page-footer">
+  <div class="footer-nav">
+    <a href="bare-essentials-aldi.html">ALDI</a>
+    <a href="becoming-trader-joe.html">Trader Joe&rsquo;s</a>
+    <a href="agency-lessons.html">Agency Lessons</a>
+  </div>
+  <div class="footer-text">The Discount Philosophy &middot; ALDI &amp; Trader Joe&rsquo;s &middot; Reading Lessons by <a href="https://peterkang.com" target="_blank">Peter Kang</a></div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  siteNav.classList.toggle('scrolled', window.scrollY > 100);
+}, { passive: true });
+</script>
+</body>
+</html>

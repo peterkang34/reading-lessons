@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bare Essentials — The ALDI Way of Retailing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Page-specific styles — shared styles in styles.css */
+
+  :root {
+    --cream: #F5F0E8;
+    --paper: #FFFDF7;
+    --rule: #D4CFC2;
+    --rule-dark: #B0AA98;
+    --accent: #C83C2C;
+    --accent-dark: #9E2E20;
+    --aldi-blue: #1E3A5F;
+    --aldi-blue-light: #2A5080;
+    --highlight-bg: #FDF6E3;
+    --nav-bg: #F0EBE0;
+  }
+
+  .hero {
+    padding: 6rem 2rem 5rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 35% 40%, rgba(200,60,44,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 65% 60%, rgba(200,60,44,0.1) 0%, transparent 50%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 39px,
+        rgba(255,253,247,0.03) 39px,
+        rgba(255,253,247,0.03) 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 39px,
+        rgba(255,253,247,0.03) 39px,
+        rgba(255,253,247,0.03) 40px
+      );
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+  }
+
+  .hero h1 em {
+    color: var(--accent);
+  }
+
+  .hero-cover {
+    transform: rotate(-1.5deg);
+  }
+
+  .hero-prepared {
+    font-size: 0.6rem;
+    opacity: 0.5;
+    margin-bottom: 4rem;
+    margin-top: 0;
+  }
+
+  .hero-prepared a {
+    color: #F2EDE4;
+    transition: opacity 0.2s;
+  }
+
+  /* ── HERO STATS ── */
+  .hero-stat-row {
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .hero-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-top: 0.4rem;
+  }
+
+  /* ── SECTION TITLE OVERRIDE ── */
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  /* ── FOOTER OVERRIDE ── */
+  .page-footer {
+    margin-top: 4rem;
+  }
+
+  .footer-text {
+    letter-spacing: 0.15em;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .hero-stat-row {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stat-num { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-brand">The Discount Philosophy</a>
+    <div class="site-nav-links">
+      <a href="index.html">Overview</a>
+      <a href="bare-essentials-aldi.html" class="active">ALDI</a>
+      <a href="becoming-trader-joe.html">Trader Joe&rsquo;s</a>
+      <a href="agency-lessons.html">Agencies</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-number">Reading Lessons</div>
+  <h1>Bare Essentials<em>The ALDI Way of Retailing</em></h1>
+  <div class="hero-author">Nils Brandes &amp; Dieter Brandes</div>
+  <img src="bare-essentials-aldi-way.jpg" alt="Bare Essentials book cover" class="hero-cover">
+  <div class="hero-prepared"><a href="https://peterkang.com" target="_blank">Prepared by Peter Kang</a></div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- MOBILE NAV -->
+<button class="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation">&equiv;</button>
+<div class="mobile-overlay" onclick="toggleMobileNav()"></div>
+
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-label">Contents</div>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="#intro"><span class="nav-num">&bull;</span> The Philosophy</a></li>
+      <div class="nav-divider"></div>
+      <li class="nav-item"><a href="#s1"><span class="nav-num">01</span> Radical Simplicity</a></li>
+      <li class="nav-item"><a href="#s2"><span class="nav-num">02</span> Limited Assortment</a></li>
+      <li class="nav-item"><a href="#s3"><span class="nav-num">03</span> Obsessive Details</a></li>
+      <li class="nav-item"><a href="#s4"><span class="nav-num">04</span> Kaizen &amp; Trial/Error</a></li>
+      <li class="nav-item"><a href="#s5"><span class="nav-num">05</span> Decentralization</a></li>
+      <li class="nav-item"><a href="#s6"><span class="nav-num">06</span> Clear, Simple Goals</a></li>
+      <li class="nav-item"><a href="#s7"><span class="nav-num">07</span> Quality Foundation</a></li>
+      <li class="nav-item"><a href="#s8"><span class="nav-num">08</span> Cost Management</a></li>
+      <li class="nav-item"><a href="#s9"><span class="nav-num">09</span> Offensive Pricing</a></li>
+      <li class="nav-item"><a href="#s10"><span class="nav-num">10</span> Supplier Independence</a></li>
+      <li class="nav-item"><a href="#s11"><span class="nav-num">11</span> Delegation</a></li>
+      <li class="nav-item"><a href="#s12"><span class="nav-num">12</span> Customer-First</a></li>
+      <li class="nav-item"><a href="#s13"><span class="nav-num">13</span> Less Communication</a></li>
+      <li class="nav-item"><a href="#s14"><span class="nav-num">14</span> Few Statistics</a></li>
+      <li class="nav-item"><a href="#s15"><span class="nav-num">15</span> Culture &amp; Character</a></li>
+      <li class="nav-item"><a href="#s16"><span class="nav-num">16</span> Honest Mistakes</a></li>
+      <div class="nav-divider"></div>
+      <li class="nav-item"><a href="#takeaways"><span class="nav-num">&rarr;</span> Key Takeaways</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- INTRO -->
+    <section class="intro-section" id="intro">
+      <div class="intro-header fade-up">
+        <div class="section-number">The Philosophy</div>
+        <h2 class="section-title">What ALDI actually is</h2>
+      </div>
+
+      <p class="intro-lead fade-up">
+        ALDI is not a discount grocery store. It's a <strong>management philosophy disguised as a retailer</strong>. Theo and Karl Albrecht built it in post-war Germany into one of the most profitable companies on earth. Their method was subtraction: fewer products, fewer people, fewer systems, fewer statistics, fewer meetings. Then fanatical execution on what remained.
+      </p>
+
+      <div class="intro-equation fade-up">
+        <div class="intro-equation-text">
+          <span class="eq-dim">~</span>600 SKUs <span class="eq-dim">&times;</span> best quality <span class="eq-dim">&times;</span> lowest cost <span class="eq-dim">=</span> <span class="eq-accent">unbeatable value</span>
+        </div>
+      </div>
+      <p class="intro-oneliner fade-up">"Not a single cent must be wasted."</p>
+
+      <div class="intro-pillars fade-up" style="margin-top: 2.5rem;">
+        <div class="intro-pillar">
+          <div class="intro-pillar-num">Principle 01</div>
+          <div class="intro-pillar-title">Radical Simplicity</div>
+          <div class="intro-pillar-desc">Cut everything that doesn't serve the customer. No marketing department, no consultants, no budgets, no complex systems. What's left moves faster and costs less.</div>
+        </div>
+        <div class="intro-pillar">
+          <div class="intro-pillar-num">Principle 02</div>
+          <div class="intro-pillar-title">Constraint as Engine</div>
+          <div class="intro-pillar-desc">~600 products. One playbook. No exceptions. The constraint forces better quality control, stronger supplier relationships, and faster decisions. Customers always know what they're getting.</div>
+        </div>
+        <div class="intro-pillar">
+          <div class="intro-pillar-num">Principle 03</div>
+          <div class="intro-pillar-title">Decentralize Everything</div>
+          <div class="intro-pillar-desc">Small units that share learnings but decide for themselves. Less coordination overhead. More internal entrepreneurs. And when one leader fails, the damage stays contained.</div>
+        </div>
+        <div class="intro-pillar">
+          <div class="intro-pillar-num">Principle 04</div>
+          <div class="intro-pillar-title">Details Are the Product</div>
+          <div class="intro-pillar-desc">Founders called stores about pallet placement. Executives shopped their own stores without being recognized. Random sample audits replaced permanent controls. The work is the details.</div>
+        </div>
+        <div class="intro-pillar">
+          <div class="intro-pillar-num">Principle 05</div>
+          <div class="intro-pillar-title">Quality Before Price</div>
+          <div class="intro-pillar-desc">Low prices without quality is a race to zero. ALDI measures its products against leading brands and never compromises for margin. That's what makes the cost discipline last and keeps customers coming back.</div>
+        </div>
+        <div class="intro-pillar">
+          <div class="intro-pillar-num">Principle 06</div>
+          <div class="intro-pillar-title">Goals Everyone Can Act On</div>
+          <div class="intro-pillar-desc">Every cashier and warehouse worker can state ALDI's strategy. No mission statements. No slide decks. If the front line can't act on your goals without asking permission, you don't have goals. You have wishes.</div>
+        </div>
+      </div>
+
+      <div class="intro-context fade-up">
+        <div class="intro-context-block">
+          <div class="intro-context-label">The Book</div>
+          <div class="intro-context-text"><em>Bare Essentials: The ALDI Way of Retailing</em> by Nils Brandes and Dieter Brandes. Both worked with the Albrecht family. This isn't a business school case study. It's a practitioner's account of how the system works at the level of daily decisions.</div>
+        </div>
+        <div class="intro-context-block">
+          <div class="intro-context-label">How to Read This</div>
+          <div class="intro-context-text">58 highlights organized into 16 themes. Each theme has the original quotes and context. Use the sidebar to jump between themes. The 14 takeaways at the end pull out the lessons that apply beyond retail.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. RADICAL SIMPLICITY -->
+    <section class="theme-section" id="s1">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 01</div>
+        <h2 class="section-title">Radical Simplicity</h2>
+        <p class="section-subtitle">At ALDI, simplicity isn't a tactic. It's the operating system. Every decision gets filtered through one question: is this the simplest way?</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"ALDI was a success because it focused on simple questions. 'Back to basics,' as Tom Peters and Robert Waterman demand. In fact it is quite simple: expenses can only be covered by customer sales. The customer pays for and finances everything."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"In their book In Search of Excellence, Peters and Waterman promote the KISS approach, or 'Keep It Simple, Stupid!'. An acronym seemingly created to describe how ALDI operates. ALDI people are doers. Everything is tried out, as fast as possible. They don't get tied down in endless, in-depth analysis."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Simplicity makes companies quicker. Time is probably the most precious resource available."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The simpler an organization is, the better it can perform. Simplicity requires less management capacity &mdash; at least in terms of quantity."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"An organization should be designed in a simple way and easy to understand, featuring flat hierarchies and simple business procedures. This results in positive cost structures and a reduction of coordination, and requires only a minimum of necessary communication between the members of the organization."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"One can only really advise at this point: do everything possible, step by step, grope forward towards solutions as ALDI and Einstein did. Avoid constructing any complicated, new systems."</div>
+        </div>
+        <div class="checklist-card fade-up">
+          <div class="checklist-title">The "Doing-Without" Checklist</div>
+          <ul class="checklist">
+            <li>No staff departments</li>
+            <li>No controlling department</li>
+            <li>No public relations</li>
+            <li>No external market research</li>
+            <li>No external consultants</li>
+            <li>No budgets and forecasts</li>
+            <li>No scientific statistics</li>
+            <li>No customer surveys</li>
+            <li>No sophisticated vendor conditions</li>
+            <li>No differentiated pricing by region</li>
+            <li>No varied product mix per store</li>
+            <li>No complicated price calculations</li>
+            <li>No quality tricks for profit</li>
+            <li>No sophisticated logistics engineering</li>
+            <li>No psychological store layouts</li>
+            <li>No luxury offices or company cars</li>
+            <li>No public appearances</li>
+            <li>No press interviews</li>
+            <li>No vendor gifts or dinners</li>
+          </ul>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"According to Gandhi, 'asceticism is the highest of the arts', and 'a true ascetic does not simply practice his art, he lives it.' ... Theo Albrecht once said: 'People live more on what they do not eat.'"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. LIMITED ASSORTMENT -->
+    <section class="theme-section" id="s2">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 02</div>
+        <h2 class="section-title">Limited Assortment</h2>
+        <p class="section-subtitle">The ~600 SKU constraint isn't a limitation. It's what makes everything else work.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"One of the decisive factors behind this simplicity is &mdash; without a doubt &mdash; ALDI's assortment, which has been limited to 600 items for several decades."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Since 1950 we have been adhering to the principle of low prices as well as that of limited selection. This was also a matter of necessity. If we did not want to offer customers a wide range of products then we had at least to offer them some other advantage."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"1. A limited assortment of everyday consumption. 2. All items easy to handle operationally. 3. Only best possible qualities &mdash; measured against leading brands. 4. The lowest possible sales prices. 5. Lowest possible cost. 6. As many private labels as possible."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"New items are not added until they have proven good sales in a test in three stores. This avoids burdening the whole organization with a possible flop."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"ALDI is in a position to study individual subjects, because the company is simply structured and the limited number of items in the assortment permits reviewing them on a one-by-one basis."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"If the principles of 'concentration' had been observed in every way, the result would have been a clearer corporate policy towards customers. The company could have considerably strengthened its purchasing power with regards to individual vendors."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OBSESSIVE DETAILS -->
+    <section class="theme-section" id="s3">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 03</div>
+        <h2 class="section-title">Obsession with Details</h2>
+        <p class="section-subtitle">The strategy is simple. The execution is granular. Leaders work at the level of individual items, individual processes, individual improvements.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"The details are not the details. The details are the product." &mdash; Charles Eames</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Theo Albrecht exemplifies an ALDI virtue: work on details to continuously improve. There is always a better option. The planned opening of a new store may result in a phone call from Theo Albrecht: 'Position the drawing so that you&hellip;' and then it is jointly enhanced."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Everywhere there are innumerable questions which require creative answers. They should be the central focus of the business. Every minor, goal-related question is important and, finally, determines what shows under the bottom line."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The easiest way to judge the performance of your own company is to buy your own products like any other customer. Do your own shopping as realistically as possible, in a store where the staff does not know you. You don't notice any of the important details until you are standing in front of the shelf yourself."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Remember Albert Einstein's approach: 'I grope my way forward.' It is no surprise that ALDI operated completely without consultants. No corporate consultancy, no market researchers, no marketing agencies."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Managers must be role models. The Executive Board made a point of visiting the stores &mdash; discretely observing an employee at his work for a few minutes. Because there is room for improvement any time, any place. The improvement made in one store can be multiplied by several thousands of stores."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. KAIZEN -->
+    <section class="theme-section" id="s4">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 04</div>
+        <h2 class="section-title">Trial and Error</h2>
+        <p class="section-subtitle">ALDI's version of kaizen distributes responsibility widely. Experimentation matters more than analysis.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Kaizen means the continuous improvement of everything in the company. Each ALDI company is responsible for specific duties. This means a large number of managers are given additional, interesting duties which in other companies are carried out by central staff departments."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"A Logistic Manager at ALDI, in addition to managing his central warehouse, also takes responsibility for the pallet trucks of the whole company. He works on achieving continuous improvements, obtains a complete overview of the market, and originates organizational improvements of all kinds."</div>
+        </div>
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"An outstandingly appropriate method in the kaizen process is 'trial and error'. Ideas and new methods can be implemented either immediately or much more quickly. An application is tested immediately in practice before people spend a lot of time analyzing and perfecting."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"This method gives people the courage to try something out and perhaps to risk a mistake as well. But even if it does fail it always provides lots of interesting insights. There are very few decisions which are right or wrong."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"ALDI came up with a world novelty which no other major retailer, including Walmart, had thought of before. ALDI required its vendors to apply the barcode onto packages at three or four different places. ALDI was able to be so innovative because its managers focus on business basics."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Random sample reviews which the Executive Board regularly carries out provide an accurate picture of the company. Attention is focused on the avoidance of any kind of waste in the sense of what the Japanese refer to as muda."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. DECENTRALIZATION -->
+    <section class="theme-section" id="s5">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 05</div>
+        <h2 class="section-title">Decentralization</h2>
+        <p class="section-subtitle">Small, autonomous units outperform large centralized ones. They also limit the blast radius when leadership fails.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"In 1961 the brothers divided their small dynasty into North and South units. They preferred 'individual leadership' to 'team leadership.' The basic reason was that it eliminated the need for continuous agreement on all essential or even non-essential matters."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The basic advantages of decentralization: less complexity, less need to communicate, better market knowledge, new people can develop independently, small units breed fewer conflicts, employees know each other, details become more important, a larger variety of ideas are developed."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Decentralization enables methods, experiences and results to be compared, and creates the freedom to make decisions based on these comparisons. The two ALDI groups have always shared experience, and the separation has substantially increased their wealth of experience."</div>
+        </div>
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"The damage which one individual, powerful ruler can do is immense. Poor leadership can be off-set by good organization to a great extent."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Presumably only thoroughly decentralized companies can survive in our complex world. Small instead of large or, as at ABB and ALDI, 'small within large'. Ant instead of elephant."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"'The eight basic principles of successful companies can actually be concentrated into one: decentralization and autonomy.' &mdash; Tom Peters. The secret of success is that decentralization turns many employees into entrepreneurs inside the company."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Overcomplexity in many companies is related to management's fear of making mistakes. Fear is the cradle of bureaucracy."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CLEAR GOALS -->
+    <section class="theme-section" id="s6">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 06</div>
+        <h2 class="section-title">Goals the Front Line Can Act On</h2>
+        <p class="section-subtitle">If your strategy needs a slide deck to explain, it won't get executed. ALDI's fits in one sentence.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"What ALDI wants is understandable to anyone: not a single cent must be wasted."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The targets set at ALDI are extraordinarily simple. The only concern is lowest costs, lowest possible sales prices and best quality. This is understood by every cashier, and by every worker in the warehouse."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"'We sell 600 items for people's basic food needs, best quality and lowest prices anywhere. Prerequisite is rock bottom costs at all levels.' This would tell ALDI employees everything they need to know. They could act, they could decide."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Companies with great visions and values do not require any mission statements to realize their ambitions. ALDI never had such a statement &mdash; and it never needed one."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Clear goals make corporate leadership reliable and easy. Many projects have failed due to a lack of clear goals. Poorly conceived projects smell foul at their inception just as rotten organizations are said to stink first at the top."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Decisions are nearly never general in nature, but are always made very clear in reference to a specific case. ALDI primarily profited from the fact that no generally valid rules were established."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Don't focus on the numbers. Numbers aren't the vision; numbers are the product. I never talk about numbers."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The foundations of good organization and leadership: clear goals, few but easy to understand business principles, total customer orientation, uncompromising thoroughness, and work on details at all levels."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. QUALITY -->
+    <section class="theme-section" id="s7">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 07</div>
+        <h2 class="section-title">Quality First</h2>
+        <p class="section-subtitle">Low prices without quality is a losing game. Quality is what makes cost discipline last.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"Reliable, uniformly perfect quality was and remains decisive for ALDI's success &mdash; more important than any specific distribution system. A distribution system can be watched, analyzed and copied. Such a fanatic and no-compromise quality policy, however, requires a specific corporate culture."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"'ALDI is not only low-price, it also provides good value for money.' 46 percent gave 'low-prices' as a reason for shopping at ALDI, 44 percent praised their good value for money, by which they obviously meant good quality."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. COST MANAGEMENT -->
+    <section class="theme-section" id="s8">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 08</div>
+        <h2 class="section-title">Cost Discipline</h2>
+        <p class="section-subtitle">Cost discipline serves the strategy. ALDI knows the difference between eliminating waste and cutting something you actually need.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"ALDI was never stiff-necked or short-sighted in the sense that it gave an 'order' to reduce cost category X by a certain percentage. Cost reduction was never forced. What is not needed can be eliminated. The yardstick for cost management must always be the strategy. Caution must be urged against cutting off the 'strategic branch' on which you are sitting."</div>
+        </div>
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"Nothing is more important than the price. The price advantage only goes to whoever has the cost advantage." &mdash; Emil Heinz</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"ALDI does not focus on impressions. Its focus is on costs and making the customer an honest offer, without any 'show'. Customers are not supposed to believe ALDI is low-price. ALDI is low-price."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Merchandise is placed on shelves and pallets solely in response to logistic considerations. Appearance is not a factor."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Our expenditures on advertising do not even amount to 0.1 percent. All our promotional efforts are put into discount prices, and they are so effective that customers are even prepared to wait in line."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. PRICING -->
+    <section class="theme-section" id="s9">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 09</div>
+        <h2 class="section-title">Offensive Pricing</h2>
+        <p class="section-subtitle">Pass savings through immediately. Build the kind of reputation where customers rearrange their schedules around you.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"If purchase prices drop we lower our sale prices immediately, even if we have not bought at the new prices yet. We take the position: offensive action is better than defensive."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The goal: customers begin to believe they cannot buy cheaper anywhere else. Once you have achieved that, customers will accept anything else. They will even rearrange their schedules to come at the best shopping times."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. SUPPLIER INDEPENDENCE -->
+    <section class="theme-section" id="s10">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 10</div>
+        <h2 class="section-title">Supplier Independence</h2>
+        <p class="section-subtitle">ALDI deliberately avoids making suppliers dependent. It feels like giving up leverage. It's actually avoiding fragility.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"There was never the intention of making any vendor completely dependent on ALDI. Such ideas may appear obvious to exercise greater influence. But this would also make ALDI dependent &mdash; dependent on fluctuations in quality, internal problems, up to and including capacity breakdowns."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"If anything is below par, there are very simple sanctions. The manufacturer who supplied to 20 distribution centers loses perhaps 5 of them. This principle also enables ALDI to test new vendors and develop them slowly."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. DELEGATION -->
+    <section class="theme-section" id="s11">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 11</div>
+        <h2 class="section-title">Delegation</h2>
+        <p class="section-subtitle">Authority gets pushed down, not hoarded. But delegation always comes with systematic control.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Managers at ALDI have shared out some of their authority, their power, to their employees. Power concentrated in the hand of a few is thus avoided and many more employees can participate in a real way."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The vehicle for transferring this power is the job description. Regulations should not contain a great deal of detail. Instead, they should be goal-oriented and more broadly worded."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Three things must be equally delegated: the duty, the authority necessary to perform this duty, and the responsibility for execution and result."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Duties are delegated which others can perform better, others can perform at less cost, make the employee's job more interesting, increase responsibility, are a challenge, and relieve managers to focus on core tasks."</div>
+        </div>
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"Performance is controlled by random samples and result assessments. Reverse-delegation is not accepted."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"People like successes, improvements and good performance because it gives their activity a purpose. This is why ALDI cashiers, despite their hard work, were considered the friendliest in the retail business."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. CUSTOMER-FIRST -->
+    <section class="theme-section" id="s12">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 12</div>
+        <h2 class="section-title">Start with the Customer</h2>
+        <p class="section-subtitle">The business model drives success, not purchasing power. The question is always: why should the customer buy here?</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"ALDI's success is not based on purchasing &mdash; as many competitors believe &mdash; but on sales and close-to-customer policies. It may even be the case that ALDI does not always get the best purchase prices."</div>
+        </div>
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"More important than purchase prices is something else: Why should the customer shop in my store? Why should the customer buy my product?"</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"As a principle, ALDI takes back anything which the customer does not like. ALDI completely eliminated any options by absolutely prohibiting any stores from rejecting a return."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The best service is the kind which is not felt to be out of the ordinary, but which is simply done."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The secret of successful retailing is to give the customer what they want."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. COMMUNICATION -->
+    <section class="theme-section" id="s13">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 13</div>
+        <h2 class="section-title">Less Communication</h2>
+        <p class="section-subtitle">Less communication isn't neglect. It's a design choice. Good structure eliminates the need for constant alignment.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"A prioritized goal should be to decrease the amount of coordination and communication between the various levels of the company."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"At ALDI purchasing and sales are kept separate. The management decides on assortment and prices based solely on sales considerations. Purchasing has the clearly defined duty to obtain goods at the lowest possible price. This system reduces coordination and communication."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The General Manager's Conference is ALDI's coordinating authority. Final decisions do not require everybody's agreement, but in general every manager supports them after an intensive discussion."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. FEW STATISTICS -->
+    <section class="theme-section" id="s14">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 14</div>
+        <h2 class="section-title">Few Statistics, More Thinking</h2>
+        <p class="section-subtitle">Numbers are tools, not answers. ALDI limits data on purpose. It forces managers to think and observe.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"At ALDI the number of statistics was so few they could nearly be counted on one hand. They were simple, manageable and comprehensible, and not scientific at all."</div>
+        </div>
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"When there are fewer statistics, managers are compelled to reflect and turn their attention to the assortment, to customers and operational details."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"You can easily get lost in a world of illusions and dead ends if you believe too firmly in numbers. Every number reflects certain conditions which have contributed to their development."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. CULTURE -->
+    <section class="theme-section" id="s15">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 15</div>
+        <h2 class="section-title">Culture and Character</h2>
+        <p class="section-subtitle">The strategy is inseparable from the people who built it. You can copy the system. You can't copy the culture.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card featured fade-up">
+          <div class="quote-text">"A corporate culture feeds on examples and role models, on the special 'characters' of the company. ALDI is decisively shaped by its founders, and this is probably one reason why the attempts to copy this company could never succeed."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"'Human behavior and strategy must go well together.' &mdash; Rolf Berth. Strategy and character are so intractably intertwined that a specific personality is not able to follow more than only a very limited number of strategic concepts."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"Even weak resources can drive good results given capable leadership and organization. By contrast, great resources can be blocked by poor leadership and organization."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"ALDI cultivates qualities attributed to successful mid-sized companies: a strong sense of mission, unlimited attention to fundamentals, fierce opposition to bureaucracy combined with an eagerness to experiment, and strong customer-orientation."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16. HONEST MISTAKES -->
+    <section class="theme-section" id="s16">
+      <div class="section-header fade-up">
+        <div class="section-number">Theme 16</div>
+        <h2 class="section-title">Honest Mistakes</h2>
+        <p class="section-subtitle">ALDI gets it wrong sometimes. The book is honest about that.</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-card fade-up">
+          <div class="quote-text">"An example of strong-willed adherence to principles &mdash; which at times can border on stubbornness or even blindness &mdash; was the way butter was treated. Butter was the only important refrigerated product not sold. This wholly contradicted the repeatedly quoted customer orientation. Bismarck's comment would have been right: having principles was like trying to run through the forest with a stick clenched between your teeth."</div>
+        </div>
+        <div class="quote-card fade-up">
+          <div class="quote-text">"The kidnappers even had to ask him to show his personal identification card to be sure they caught the right person. The official message inside the company was that Theo was home with a cold &mdash; but staying home because of a cold would have been very unusual for him. No one can remember him ever having stayed away from work due to illness."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAKEAWAYS -->
+    <section class="takeaways-section" id="takeaways">
+      <div class="section-header fade-up">
+        <div class="section-number">Synthesis</div>
+        <h2 class="section-title">Key Takeaways</h2>
+      </div>
+      <div class="takeaways-grid fade-up">
+        <div class="takeaway-card">
+          <div class="takeaway-num">01</div>
+          <div class="takeaway-title">Simplicity is the advantage.</div>
+          <div class="takeaway-desc">~600 SKUs. Faster decisions, lower costs, higher quality, better delegation. All from one constraint.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">02</div>
+          <div class="takeaway-title">Do without before you optimize.</div>
+          <div class="takeaway-desc">Don't optimize a function. Ask whether you need it at all.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">03</div>
+          <div class="takeaway-title">Decentralize into small, autonomous units.</div>
+          <div class="takeaway-desc">Less coordination. More experimentation. And when a leader fails, the damage stays local.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">04</div>
+          <div class="takeaway-title">Goals must be simple enough for the front line.</div>
+          <div class="takeaway-desc">If your strategy needs a slide deck, it won't get executed.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">05</div>
+          <div class="takeaway-title">Quality is what makes low prices last.</div>
+          <div class="takeaway-desc">Customers come for the price. They stay because the quality holds up.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">06</div>
+          <div class="takeaway-title">Pass through savings immediately.</div>
+          <div class="takeaway-desc">Offensive pricing builds a reputation that feeds itself.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">07</div>
+          <div class="takeaway-title">Don't make suppliers dependent on you.</div>
+          <div class="takeaway-desc">Dependency feels like leverage. It's actually fragility.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">08</div>
+          <div class="takeaway-title">Details are the product.</div>
+          <div class="takeaway-desc">Senior leaders inspect stores, study equipment, call about layouts. The details are the work.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">09</div>
+          <div class="takeaway-title">Random samples beat permanent controls.</div>
+          <div class="takeaway-desc">Cheaper, more effective, and they keep leaders in contact with what's actually happening.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">10</div>
+          <div class="takeaway-title">Fewer statistics force better thinking.</div>
+          <div class="takeaway-desc">Less data means you have to actually look at customers, products, and operations.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">11</div>
+          <div class="takeaway-title">Good structure means less communication.</div>
+          <div class="takeaway-desc">If you need more meetings, your org design is wrong.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">12</div>
+          <div class="takeaway-title">Fear is the cradle of bureaucracy.</div>
+          <div class="takeaway-desc">Small units and clear delegation are how you fight it.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">13</div>
+          <div class="takeaway-title">Strategy and character have to match.</div>
+          <div class="takeaway-desc">You can copy the system. You can't copy the culture that makes it work.</div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">14</div>
+          <div class="takeaway-title">The customer finances everything.</div>
+          <div class="takeaway-desc">Every cost, every salary, every investment comes from them.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <div class="footer-nav">
+        <a href="index.html">Overview</a>
+        <a href="becoming-trader-joe.html">Trader Joe&rsquo;s</a>
+        <a href="agency-lessons.html">Agency Lessons</a>
+      </div>
+      <div class="footer-text">Bare Essentials &middot; Nils Brandes &amp; Dieter Brandes</div>
+    </footer>
+
+  </main>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})" aria-label="Back to top">&uarr;</button>
+
+<script>
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Active nav tracking
+const sections = document.querySelectorAll('.intro-section, .theme-section, .takeaways-section');
+const navLinks = document.querySelectorAll('.nav-item a');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0, rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(section => navObserver.observe(section));
+
+// Back to top button + site nav
+const backToTop = document.getElementById('backToTop');
+const siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 600);
+  siteNav.classList.toggle('scrolled', window.scrollY > 100);
+}, { passive: true });
+
+// Mobile nav
+function toggleMobileNav() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.querySelector('.mobile-overlay').classList.toggle('open');
+}
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-item a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+    document.querySelector('.mobile-overlay').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

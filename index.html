@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Lessons — Peter Kang</title>
+<meta name="description" content="Book analyses and reading lessons by Peter Kang. Deep dives into business books with highlights, themes, and applied takeaways.">
+<meta property="og:title" content="Reading Lessons — Peter Kang">
+<meta property="og:description" content="Book analyses and reading lessons. Deep dives into business books with highlights, themes, and applied takeaways.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F8F5EF;
+    --ink: #1A1A18;
+    --ink-light: #4A4A42;
+    --ink-faint: #8A8A7E;
+    --rule: #DDD8CC;
+    --paper: #FFFFFF;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
+  html { font-size: 16px; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin-bottom: 4rem;
+    max-width: 550px;
+  }
+
+  .library {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .library-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: start;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .library-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  }
+
+  .library-card-covers {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .library-card-cover {
+    max-height: 100px;
+    border-radius: 2px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  }
+
+  .library-card-cover:first-child:not(:only-child) {
+    transform: rotate(-2deg) translateX(6px);
+    z-index: 1;
+  }
+
+  .library-card-cover:last-child:not(:only-child) {
+    transform: rotate(2deg) translateX(-6px);
+  }
+
+  .library-card-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .library-card-tag {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.4rem;
+  }
+
+  .library-card-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .library-card-desc {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 3rem 1.5rem; }
+    .library-card { flex-direction: column; gap: 1rem; }
+    .library-card-covers { align-self: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">Peter Kang</div>
+  <h1>Reading Lessons</h1>
+  <p class="intro">Book analyses with highlights, themes, and applied takeaways. Each microsite pulls from my reading highlights and connects the ideas to running agencies and building businesses.</p>
+
+  <div class="library">
+    <a href="discount-retail/" class="library-card">
+      <div class="library-card-covers">
+        <img src="discount-retail/bare-essentials-aldi-way.jpg" alt="Bare Essentials cover" class="library-card-cover">
+        <img src="discount-retail/becoming-trader-joe-cover.jpg" alt="Becoming Trader Joe cover" class="library-card-cover">
+      </div>
+      <div class="library-card-body">
+        <div class="library-card-tag">2 Books &middot; 4 Pages</div>
+        <div class="library-card-title">The Discount Philosophy</div>
+        <div class="library-card-desc">ALDI and Trader Joe's. Two retailers, one family, shared lessons about simplicity, value, and what they can teach agencies.</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer"><a href="https://peterkang.com" target="_blank">peterkang.com</a></div>
+</div>
+</body>
+</html>
