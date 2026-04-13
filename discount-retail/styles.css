@@ -1026,8 +1026,8 @@ body {
 }
 
 @media (max-width: 600px) {
-  .site-nav-left { display: none; }
-  .site-nav-inner { justify-content: center; }
+  .site-nav-brand, .site-nav-sep { display: none; }
+  .site-nav-inner { justify-content: space-between; }
   .site-nav-links a {
     font-size: 0.55rem;
     padding: 0.5rem 0.5rem;
