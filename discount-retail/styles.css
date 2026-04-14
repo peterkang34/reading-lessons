@@ -950,6 +950,105 @@ body {
 .quotes-container .quote-card:nth-child(7) { transition-delay: 360ms; }
 .quotes-container .quote-card:nth-child(8) { transition-delay: 420ms; }
 
+/* ── NEWSLETTER ── */
+.newsletter-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid var(--rule, #DDD8CC);
+  margin-top: 2rem;
+}
+
+.newsletter-section h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.newsletter-section .newsletter-desc {
+  font-size: 0.85rem;
+  color: var(--ink-light, #4A4A42);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-form .formkit-input {
+  font-family: var(--sans, 'DM Sans', system-ui, sans-serif);
+  font-size: 0.85rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--rule, #DDD8CC);
+  border-radius: 4px;
+  background: var(--paper, #FFFDF7);
+  color: var(--ink, #1A1A18);
+  outline: none;
+  transition: border-color 0.2s;
+  flex: 1;
+  min-width: 140px;
+}
+
+.newsletter-form .formkit-input:focus {
+  border-color: var(--ink-faint, #8A8A7E);
+}
+
+.newsletter-form .formkit-submit {
+  font-family: var(--sans, 'DM Sans', system-ui, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.65rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--ink, #1A1A18);
+  color: var(--cream, #F5F0E8);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-form .formkit-submit:hover {
+  opacity: 0.85;
+}
+
+.newsletter-form .formkit-alert-error {
+  list-style: none;
+  color: #C83C2C;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.newsletter-note {
+  font-size: 0.7rem;
+  color: var(--ink-faint, #8A8A7E);
+  margin-top: 0.8rem;
+  font-weight: 300;
+}
+
+.newsletter-fields {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .newsletter-fields {
+    flex-direction: column;
+  }
+  .newsletter-form .formkit-submit {
+    width: 100%;
+  }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .page-body {
