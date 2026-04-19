@@ -1,0 +1,55 @@
+/* ══════════════════════════════════════════════════════════════
+   SHARED STYLES — The Compounding Playbook
+   Imports the base from discount-retail, then overrides the
+   accent color and adds page-specific tweaks.
+   ══════════════════════════════════════════════════════════════ */
+
+@import url('../discount-retail/styles.css');
+
+/* ── COLOR OVERRIDES ── */
+:root {
+  --accent: #2B4C7E;
+  --accent-light: #4A7FB5;
+  --accent-glow: rgba(43,76,126,0.08);
+  --accent-glow-strong: rgba(43,76,126,0.15);
+}
+
+/* ── HERO RADIAL GRADIENT ── */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 40% 35%, rgba(43,76,126,0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 65% 55%, rgba(74,127,181,0.2) 0%, transparent 50%);
+}
+
+/* ── QUOTE CARD HOVER ── */
+.quote-card:hover::before {
+  background: var(--accent);
+}
+
+.quote-card.featured::before {
+  background: var(--accent);
+}
+
+/* ── FOOTER NAV HOVER ── */
+.footer-nav a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── BACK-TO-TOP HOVER ── */
+.back-to-top:hover {
+  background: var(--accent);
+}
+
+/* ── NAV ACTIVE STATE ── */
+.nav-item a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.nav-item a.active .nav-num {
+  color: var(--accent);
+}

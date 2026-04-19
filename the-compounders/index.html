@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Compounding Playbook — The Compounders</title>
+<meta name="description" content="Lessons from The Compounders: how nine acquisition-driven holding companies build shareholder value through small deals, decentralization, and disciplined reinvestment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Page-specific styles */
+
+  .hero h1 {
+    max-width: 800px;
+    line-height: 1.05;
+  }
+
+  .hero h1 em {
+    font-size: 0.55em;
+    line-height: 1.4;
+    margin-top: 0.5em;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    max-width: 580px;
+  }
+
+  .hero-cover {
+    max-height: 220px;
+    transform: rotate(-1.5deg);
+  }
+
+  .hero-cover:hover {
+    transform: rotate(0deg) scale(1.04);
+  }
+
+  /* ── COMPANIES GRID ── */
+  .companies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .company-card {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .company-card:hover { background: #F2EDE4; }
+
+  .company-card-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+  }
+
+  .company-card-desc {
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── PRINCIPLES GRID ── */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .principle-card {
+    background: #FFFFFF;
+    padding: 2rem 1.8rem;
+    transition: background 0.2s;
+  }
+
+  .principle-card:hover { background: #F2EDE4; }
+
+  .principle-num {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .principle-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .principle-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── NAVIGATE CARDS ── */
+  .nav-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .nav-card {
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .nav-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+
+  .nav-card-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+
+  .nav-card-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .nav-card-desc {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .nav-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    transition: gap 0.2s;
+  }
+
+  .nav-card:hover .nav-card-cta { gap: 0.7rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .companies-grid { grid-template-columns: 1fr 1fr; }
+    .principles-grid { grid-template-columns: 1fr; }
+    .nav-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .companies-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <div class="site-nav-inner">
+    <div class="site-nav-left">
+      <a href="../" class="site-nav-up">Library</a>
+      <span class="site-nav-sep">/</span>
+      <a href="index.html" class="site-nav-brand">The Compounding Playbook</a>
+    </div>
+    <div class="site-nav-links">
+      <a href="index.html" class="active">Overview</a>
+      <a href="highlights.html">Highlights</a>
+      <a href="holdco-lessons.html">Holdcos</a>
+      <a href="agency-lessons.html">Agencies</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Reading Lessons</div>
+  <img src="the-compounders.jpg" alt="The Compounders book cover" class="hero-cover">
+  <div class="hero-accent-line"></div>
+  <h1>The Compounding Playbook<em>Nine holding companies. Hundreds of acquisitions. One formula for building lasting value.</em></h1>
+  <p class="hero-sub">How Lifco, Constellation Software, HEICO, and six other acquisition-driven holdcos turn small, disciplined deals into extraordinary shareholder returns over decades.</p>
+  <div class="hero-author">Dybvad &middot; Nyland &middot; Had&zcaron;iefendi&cacute;</div>
+  <div class="hero-prepared"><a href="https://peterkang.com" target="_blank">Prepared by Peter Kang</a></div>
+</section>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ═══ WHAT IT IS ═══ -->
+  <section class="section" id="about">
+    <div class="section-eyebrow fade-up">The Book</div>
+    <h2 class="section-title fade-up">What The Compounders actually is</h2>
+    <div class="section-prose fade-up">
+      <p>The book profiles nine publicly traded holding companies that have generated extraordinary shareholder returns. Not through bold bets or turnarounds. Through repetition. They buy small, niche businesses at disciplined prices, let those businesses run themselves, and reinvest the cash flow into more of the same.</p>
+      <p>Five are Swedish (Lifco, Indutrade, Bergman &amp; Beving, Lagercrantz, Addtech). One is Canadian (Constellation Software). One is British (Judges Scientific). Two are American (AMETEK, HEICO). They span industrial products, vertical software, scientific instruments, and aerospace parts.</p>
+      <p>They share a common operating system: decentralized cultures, lean headquarters, simple financial metrics, and a relentless focus on cash flow. The formula is ROIC times reinvestment rate times time. Get all three right, and the math takes over.</p>
+    </div>
+  </section>
+
+  <!-- ═══ THE NINE COMPANIES ═══ -->
+  <section class="section" id="companies">
+    <div class="section-eyebrow fade-up">The Nine</div>
+    <h2 class="section-title fade-up">Who are the compounders?</h2>
+    <p class="section-lead fade-up">Nine holding companies across three continents. Different industries, same playbook.</p>
+
+    <div class="companies-grid fade-up">
+      <div class="company-card">
+        <div class="company-card-name">Lifco</div>
+        <div class="company-card-desc">250+ portfolio companies. Asset-light niche leaders. 85% reinvestment rate at 20%+ ROIC.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">Indutrade</div>
+        <div class="company-card-desc">Industrial distribution turned proprietary products. 35+ years of self-funded growth.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">Bergman &amp; Beving</div>
+        <div class="company-card-desc">The mother ship. P/WC &gt; 45% metric. Spawned Addtech and Lagercrantz.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">Lagercrantz</div>
+        <div class="company-card-desc">Pivoted from distribution to niche product companies. Growth Fund + internal academy.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">Addtech</div>
+        <div class="company-card-desc">Small family-owned businesses at 7-8x earnings. 15% annual profit growth target.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">Constellation Software</div>
+        <div class="company-card-desc">1,000+ acquisitions. 10 people at HQ. 375x shareholder wealth creation since IPO.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">Judges Scientific</div>
+        <div class="company-card-desc">Scientific instruments. ROTIC as the north star. Self-funded since 2013.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">AMETEK</div>
+        <div class="company-card-desc">40+ business units. Mini P&amp;Ls for talent development. $200-300M niche markets.</div>
+      </div>
+      <div class="company-card">
+        <div class="company-card-name">HEICO</div>
+        <div class="company-card-desc">100+ acquisitions, 98% success rate. 25%+ operating margins. Aerospace and defense.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BIG QUOTE ═══ -->
+  <div class="big-quote fade-up">
+    <div class="big-quote-text">&ldquo;Buy low, sell high the saying goes. But in fact the most astounding investment returns come from buying well and selling never.&rdquo;</div>
+    <div class="big-quote-source">The Compounders</div>
+  </div>
+
+  <!-- ═══ CORE PRINCIPLES ═══ -->
+  <section class="section" id="principles">
+    <div class="section-eyebrow fade-up">The Playbook</div>
+    <h2 class="section-title fade-up">Six principles they all share</h2>
+    <p class="section-lead fade-up">Different industries, different geographies, different decades. But the same underlying operating system runs through all nine.</p>
+
+    <div class="principles-grid fade-up">
+      <div class="principle-card">
+        <div class="principle-num">01</div>
+        <div class="principle-title">Small, disciplined acquisitions</div>
+        <div class="principle-desc">Buy businesses too small for PE to care about. Pay 5-8x earnings. Fund deals from internal cash flow. Repeat hundreds of times.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">02</div>
+        <div class="principle-title">Decentralize everything</div>
+        <div class="principle-desc">Push decisions to the people closest to the customer. Keep HQ microscopic. Trust replaces control. Constellation runs 25,000 employees with 10 people at headquarters.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">03</div>
+        <div class="principle-title">Dominate small niches</div>
+        <div class="principle-desc">Target markets of $200-300M. Be the #1 or #2 player. Small markets discourage new entrants and allow rational pricing. Mission-critical products stay sticky.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">04</div>
+        <div class="principle-title">Simple metrics, cash focus</div>
+        <div class="principle-desc">P/WC &gt; 45%. ROTIC. EBITA growth plus capital charge. Metrics every employee can understand, tied directly to incentives. Track cash flow, not just revenue.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">05</div>
+        <div class="principle-title">Reinvest relentlessly</div>
+        <div class="principle-desc">Pour 75-85%+ of free cash flow back into acquisitions and organic growth. Treat equity as precious. Self-fund from operations whenever possible.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">06</div>
+        <div class="principle-title">Think in decades</div>
+        <div class="principle-desc">Wealth creation is back-loaded. One woman held shares for 50 years and became a multimillionaire. The curve steepens. Patience is the multiplier.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EQUATION ═══ -->
+  <div class="intro-equation fade-up">
+    <div class="intro-equation-text">
+      <span class="eq-accent">Value Creation</span> <span class="eq-dim">=</span> ROIC <span class="eq-dim">&times;</span> Reinvestment Rate <span class="eq-dim">&times;</span> <span class="eq-accent">Time</span>
+    </div>
+  </div>
+  <p class="intro-oneliner fade-up">Get all three right, and the math takes over.</p>
+
+  <!-- ═══ NAVIGATE ═══ -->
+  <section class="section" id="explore">
+    <div class="section-eyebrow fade-up">Go Deeper</div>
+    <h2 class="section-title fade-up">Explore the analysis</h2>
+
+    <div class="nav-cards fade-up">
+      <a href="highlights.html" class="nav-card">
+        <div class="nav-card-eyebrow">128 Highlights</div>
+        <div class="nav-card-title">Book Highlights</div>
+        <div class="nav-card-desc">Every highlight organized by theme. Decentralization, acquisitions, pricing power, cash culture, and more.</div>
+        <div class="nav-card-cta">Read highlights &rarr;</div>
+      </a>
+      <a href="holdco-lessons.html" class="nav-card">
+        <div class="nav-card-eyebrow">For Holdcos</div>
+        <div class="nav-card-title">Holdco Lessons</div>
+        <div class="nav-card-desc">Capital allocation, M&amp;A discipline, portfolio design, and HQ structure. What holdco builders can take from these nine companies.</div>
+        <div class="nav-card-cta">Read lessons &rarr;</div>
+      </a>
+      <a href="agency-lessons.html" class="nav-card">
+        <div class="nav-card-eyebrow">For Agencies</div>
+        <div class="nav-card-title">Agency Lessons</div>
+        <div class="nav-card-desc">What niche industrial companies can teach individual service businesses about focus, pricing, talent, and reinvestment.</div>
+        <div class="nav-card-cta">Read lessons &rarr;</div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<section class="newsletter-section">
+  <h3>Consumed/Created</h3>
+  <p class="newsletter-desc">A weekly newsletter by Peter Kang on building a holding company, acquiring and growing agency businesses, and other thoughts on business and life.</p>
+  <script src="https://f.convertkit.com/ckjs/ck.5.js" async></script>
+  <form action="https://app.kit.com/forms/9327259/subscriptions" class="seva-form formkit-form newsletter-form" method="post" data-sv-form="9327259" data-uid="7b5e7d2e5a" data-format="inline" data-version="5">
+    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+    <div data-element="fields" class="newsletter-fields">
+      <input class="formkit-input" name="email_address" aria-label="Email" placeholder="Email" required type="email">
+      <input class="formkit-input" aria-label="First Name" name="fields[first_name]" placeholder="First name" type="text">
+      <button data-element="submit" class="formkit-submit">Subscribe</button>
+    </div>
+    <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
+  </form>
+</section>
+
+<footer class="page-footer">
+  <div class="footer-nav">
+    <a href="highlights.html">Highlights</a>
+    <a href="holdco-lessons.html">Holdco Lessons</a>
+    <a href="agency-lessons.html">Agency Lessons</a>
+  </div>
+  <div class="footer-text">The Compounding Playbook &middot; <a href="https://peterkang.com" target="_blank">Peter Kang</a></div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  siteNav.classList.toggle('scrolled', window.scrollY > 100);
+}, { passive: true });
+</script>
+</body>
+</html>

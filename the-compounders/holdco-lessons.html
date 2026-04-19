@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lessons for Holdcos — The Compounding Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --accent: #2B4C7E;
+    --accent-light: #4A7FB5;
+    --accent-glow: rgba(43,76,126,0.08);
+    --accent-glow-strong: rgba(43,76,126,0.15);
+  }
+
+  .hero h1 { max-width: 750px; }
+
+  .content { max-width: 860px; }
+
+  /* ── LESSON CARDS ── */
+  .lesson {
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .lesson-num {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+
+  .lesson-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    line-height: 1.25;
+    margin-bottom: 1.2rem;
+  }
+
+  .lesson-quote {
+    background: var(--accent-glow);
+    border-left: 3px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .lesson-quote-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 0.5rem;
+  }
+
+  .lesson-quote-source {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .lesson-body {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .lesson-body p {
+    margin-bottom: 1rem;
+  }
+
+  .lesson-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .lesson { padding: 1.5rem; }
+    .lesson-quote { padding: 1rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <div class="site-nav-inner">
+    <div class="site-nav-left">
+      <a href="../" class="site-nav-up">Library</a>
+      <span class="site-nav-sep">/</span>
+      <a href="index.html" class="site-nav-brand">The Compounding Playbook</a>
+    </div>
+    <div class="site-nav-links">
+      <a href="index.html">Overview</a>
+      <a href="highlights.html">Highlights</a>
+      <a href="holdco-lessons.html" class="active">Holdcos</a>
+      <a href="agency-lessons.html">Agencies</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Reading Lessons</div>
+  <img src="the-compounders.jpg" alt="The Compounders cover" class="hero-cover">
+  <div class="hero-accent-line"></div>
+  <h1>Lessons for Holdcos</h1>
+  <p class="hero-sub">What nine acquisition-driven holding companies can teach anyone building a portfolio of businesses. Capital allocation, M&amp;A discipline, HQ design, and portfolio management.</p>
+  <div class="hero-prepared"><a href="https://peterkang.com" target="_blank">Prepared by Peter Kang</a></div>
+</section>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- INTRO -->
+  <section class="section" id="intro">
+    <div class="section-eyebrow fade-up">The Connection</div>
+    <h2 class="section-title fade-up">A playbook for building holding companies</h2>
+    <div class="section-prose fade-up">
+      <p>The Compounders profiles nine publicly traded holdcos that have generated extraordinary returns. They operate in different industries and geographies, but they share a common architecture: lean headquarters, decentralized operating companies, disciplined M&amp;A, and a relentless focus on deploying cash flow at high returns.</p>
+      <p>These are not conglomerates in the old sense. They are acquisition engines built to buy small, keep what they buy, and let the math of reinvestment do the work over decades. The lessons apply to any holdco builder, whether you are buying software companies, manufacturing businesses, or service firms.</p>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+  <section class="section" id="lessons">
+    <div class="section-eyebrow fade-up">The Lessons</div>
+    <h2 class="section-title fade-up">What the compounders teach holdco builders</h2>
+    <p class="section-lead fade-up">Twelve lessons on capital allocation, portfolio design, and building a holding company that lasts.</p>
+
+    <!-- LESSON 1 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Buy small, buy often, buy at disciplined prices</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;Avoiding overpaying for acquisitions is crucial. Paying a 10&times; multiple for a private company, compared to 5&times;, is the difference between 10% ROIC and 20% ROIC assuming 100% cash conversion.&rdquo;</div>
+        <div class="lesson-quote-source">The Compounders</div>
+      </div>
+      <div class="lesson-body">
+        <p>Every compounder in the book buys businesses too small for private equity or strategic buyers to care about. Lifco caps acquisitions at 8x EBITA. Addtech targets $10-20M deals at 7-8x. Constellation has done over 1,000 acquisitions, most under $5M.</p>
+        <p>The math matters. At 5x, your money earns 20% returns immediately. At 10x, it earns 10%. Over a decade of deals, that spread determines whether the portfolio is a genuine wealth machine or a mediocre collection of businesses.</p>
+        <p>Small deals also reduce risk. A bad $3M acquisition is a footnote. A bad $50M acquisition can break a holding company.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 2 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">HQ is an allocator, not an operator</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;The function of the small HQ is to trust but verify by following up on subsidiary performance and wisely allocating the capital generated.&rdquo;</div>
+        <div class="lesson-quote-source">on Bergman &amp; Beving</div>
+      </div>
+      <div class="lesson-body">
+        <p>Lifco has a handful of people at HQ for 250+ companies. Constellation has 10 for 25,000 employees. Indutrade started in a basement with no sign on the door.</p>
+        <p>These holdcos resist the temptation to build large corporate teams. HQ does two things: allocate capital and carry culture. It does not run operations, set strategy for operating companies, or build shared services that nobody asked for.</p>
+        <p>The instinct to centralize grows as a portfolio gets larger. Resist it. Every person added to HQ adds overhead, slows decisions, and signals to operating company leaders that you do not trust them.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 3 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">Fund acquisitions from internal cash flow</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;Indutrade has achieved steady growth since its start more than 35 years ago, and the key to our success is our focus on generating positive cash flow. With the money we earn we buy quality companies that generate more money, which enables us to buy more quality companies&mdash;it&rsquo;s that simple.&rdquo;</div>
+        <div class="lesson-quote-source">Indutrade</div>
+      </div>
+      <div class="lesson-body">
+        <p>Lifco has not issued a single share since its IPO. Judges Scientific stopped raising external equity in 2013. Constellation Software relies on free cash flow as its primary capital source.</p>
+        <p>External capital (debt or equity) is available for exceptional situations. But the default should be self-funding. It enforces discipline on deal size and price. It prevents dilution. And it creates a flywheel: cash flow funds acquisitions, acquisitions generate cash flow, and the cycle repeats.</p>
+        <p>The holdco that depends on outside capital for every deal has a ceiling. The one that self-funds from its portfolio does not.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 4 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Decentralize or die slowly</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;Bergman &amp; Beving&rsquo;s bold centralization and vertical integration project, aggressively acquiring over 100 companies, in the short term led to the stock outperforming both Addtech and Lagercrantz. However, the cracks in their aggressive centralization strategy were revealed when the financial crisis hit.&rdquo;</div>
+        <div class="lesson-quote-source">on Bergman &amp; Beving</div>
+      </div>
+      <div class="lesson-body">
+        <p>Bergman &amp; Beving tried centralization. It worked in good times. It broke in bad times. Lagercrantz tried a central warehouse. It killed entrepreneurship. Both reversed course and returned to decentralized models.</p>
+        <p>Centralization is seductive because it looks efficient on paper. Shared services, unified branding, combined sales teams. But it strips operating companies of ownership over their results and makes the entire portfolio fragile to a single point of failure at HQ.</p>
+        <p>If you must centralize something, treat it as a reversible experiment with clear metrics and exit ramps. The default posture should be: each operating company runs its own business.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 5 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 05</div>
+      <div class="lesson-title">Pick one or two metrics and make them universal</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;The recurring lesson is to avoid unnecessary complexity. It&rsquo;s about establishing an internal language that resonates, especially with small business owners who may have engineering backgrounds and not be well-versed in financial terminology.&rdquo;</div>
+        <div class="lesson-quote-source">The Compounders</div>
+      </div>
+      <div class="lesson-body">
+        <p>Bergman &amp; Beving and Addtech use P/WC &gt; 45%. Judges tracks ROTIC monthly. Lifco uses EBITA growth plus a capital charge. Each company chose one or two metrics, made them simple enough for every employee to understand, and tied incentives directly to them.</p>
+        <p>Complex dashboards with dozens of KPIs are worse than useless. They dilute focus. A single metric that a warehouse worker and a managing director both understand and can influence is worth more than a hundred metrics that only finance can interpret.</p>
+        <p>The metric should capture both profitability and capital efficiency. Revenue growth alone is dangerous. Profit alone misses capital intensity. The best metrics force both into view.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 6 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 06</div>
+      <div class="lesson-title">Build your M&amp;A muscle internally</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;When acquisitions are embedded in the business model, success improves with each repetition. To foster this expertise, Addtech trains its business unit leaders to conduct internal commercial due diligence and valuations, reducing reliance on costly external consultants.&rdquo;</div>
+        <div class="lesson-quote-source">on Addtech</div>
+      </div>
+      <div class="lesson-body">
+        <p>Lifco has 20 people dedicated to M&amp;A, half developed internally. Addtech trains business unit leaders to source and evaluate deals themselves. Constellation has built a data set and knowledge base from 1,000+ acquisitions that no outside advisor could replicate.</p>
+        <p>Outsourcing deal flow to brokers puts you in competitive auctions where prices get bid up. Building proprietary sourcing means direct relationships with founders, better pricing, and deals that never hit the open market.</p>
+        <p>This takes years. Indutrade&rsquo;s founder asked his best customers which suppliers they respected most. That question led to some of Indutrade&rsquo;s best acquisitions. The pipeline comes from doing the work, not from paying someone else to find it.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 7 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 07</div>
+      <div class="lesson-title">A reputation for fairness is a deal-sourcing advantage</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;These founders might have a business they could have sold for $6m and they choose to sell for $5m to Constellation because there&rsquo;s a certain amount of ego to it. Johnson &amp; Sons software company will stay Johnson &amp; Sons, and they&rsquo;ll stay Johnson &amp; Sons for 50 years.&rdquo;</div>
+        <div class="lesson-quote-source">Navi Hehar, Constellation Software</div>
+      </div>
+      <div class="lesson-body">
+        <p>Founders sell to these holdcos at lower multiples because they trust their legacy will be preserved. The business keeps its name. The team stays. The culture is respected.</p>
+        <p>This is a real competitive advantage. PE firms often pay more but strip the business. Strategic acquirers merge and rebrand. The holdco that can credibly promise permanent, respectful ownership wins deals on terms that PE cannot match.</p>
+        <p>Building this reputation takes time and consistency. Every founder who sells to you talks to other founders. One bad outcome can poison the pipeline for years.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 8 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 08</div>
+      <div class="lesson-title">Treat frugality as a cultural signal</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;Leonard, who stands 6&rsquo;5&quot; and weighs 280 pounds, described how he flew economy on a business trip to the UK despite the discomfort involved and his ability to afford business class. This choice wasn&rsquo;t simply personal frugality but a leadership standard.&rdquo;</div>
+        <div class="lesson-quote-source">on Mark Leonard, Constellation Software</div>
+      </div>
+      <div class="lesson-body">
+        <p>The CEOs of these companies do not fly business class, do not have fancy offices, and do not employ secretaries. It is not about saving money. It is about setting a standard.</p>
+        <p>When the CEO makes his own coffee and flies economy, it sends a message to every employee: we spend shareholder capital carefully. This cultural signal is more powerful than any policy memo. It shapes how 250 subsidiary managing directors think about expenses, overhead, and capital deployment.</p>
+        <p>Frugality at HQ earns credibility with operating companies. If HQ asks subsidiaries to be disciplined with costs while HQ itself operates lavishly, the message is hollow.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 9 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 09</div>
+      <div class="lesson-title">Do post-acquisition reviews, every time</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;Constellation Software has ingrained a culture of continuous learning... the company conducts post-acquisition reviews (PARs), in which decision-makers analyze investments a year after the transaction, sharing valuable company insights.&rdquo;</div>
+        <div class="lesson-quote-source">on Constellation Software</div>
+      </div>
+      <div class="lesson-body">
+        <p>Constellation reviews every acquisition a year after closing. What worked. What did not. What they missed in diligence. What they would do differently.</p>
+        <p>Most acquirers skip this step because the feedback loop is uncomfortable. Nobody wants to revisit the deal they championed and acknowledge what went wrong. But without PARs, the same mistakes repeat. With them, every acquisition improves the playbook for the next one.</p>
+        <p>The holdco that does 50 acquisitions without reviewing any of them is guessing. The one that reviews all 50 is building institutional knowledge that no competitor can replicate.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 10 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 10</div>
+      <div class="lesson-title">Be willing to pivot the portfolio mix</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;The flexibility provided by separating the holding company level (where capital allocation occurs) from the operating company level (where operations are managed) allows the compounders to iterate, course-correct and change, often dramatically, in pursuit of creating shareholder value.&rdquo;</div>
+        <div class="lesson-quote-source">The Compounders</div>
+      </div>
+      <div class="lesson-body">
+        <p>Addtech started in industrial distribution and pivoted into energy, which is now its largest division. Lagercrantz abandoned distribution entirely for proprietary niche products. Bergman &amp; Beving divested Skydda when it did not deliver on cash flow.</p>
+        <p>A holdco is not a static collection. It is a living portfolio. As you learn which sectors and business types produce the best returns, shift capital toward them. When a subsidiary cannot meet the financial bar, act. There are no sacred cows.</p>
+        <p>This flexibility is one of the holdco model&rsquo;s greatest strengths. The Ship of Theseus question is real: the portfolio can transform completely over a decade while the capital allocation engine stays the same.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 11 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 11</div>
+      <div class="lesson-title">Grow the next generation of capital allocators</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;He pushed deal responsibilities for acquisitions out from headquarters. This increased the pool of people capable of making capital allocation decisions, and with that came a greater number of opportunities.&rdquo;</div>
+        <div class="lesson-quote-source">on Indutrade</div>
+      </div>
+      <div class="lesson-body">
+        <p>The biggest constraint on holdco growth is not capital or deal flow. It is people who can evaluate and execute acquisitions with the same discipline as the founder.</p>
+        <p>Indutrade pushed M&amp;A responsibility to business area leaders. Addtech built internal training so unit managers could conduct their own diligence. Lifco requires operating company experience before promoting anyone to group manager.</p>
+        <p>A holdco that depends on one person to evaluate every deal has a hard ceiling. One that trains dozens of people to think like allocators can scale the M&amp;A machine indefinitely.</p>
+      </div>
+    </div>
+
+    <!-- LESSON 12 -->
+    <div class="lesson fade-up">
+      <div class="lesson-num">Lesson 12</div>
+      <div class="lesson-title">Think in decades, not quarters</div>
+      <div class="lesson-quote">
+        <div class="lesson-quote-text">&ldquo;While the company&rsquo;s annual growth may seem unremarkable from the outside, Indutrade recognizes that the true power of compounding lies in sustainability. Growth is not about speed alone but about endurance.&rdquo;</div>
+        <div class="lesson-quote-source">on Indutrade</div>
+      </div>
+      <div class="lesson-body">
+        <p>Constellation Software compounded operating profit by 33% annually for nearly 20 years. HEICO maintained a 98% acquisition success rate over 100+ deals. These are not sprint results. They are the product of patience, consistency, and the discipline to keep doing the same thing well for a long time.</p>
+        <p>The temptation for a growing holdco is to accelerate: bigger deals, more leverage, faster pace. Every compounder that tried this eventually pulled back. Speed introduces risk. Leverage amplifies downturns. Bigger deals mean higher prices and less margin for error.</p>
+        <p>The playbook is the opposite: stay small, stay disciplined, stay patient. The curve steepens on its own.</p>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<section class="newsletter-section">
+  <h3>Consumed/Created</h3>
+  <p class="newsletter-desc">A weekly newsletter by Peter Kang on building a holding company, acquiring and growing agency businesses, and other thoughts on business and life.</p>
+  <script src="https://f.convertkit.com/ckjs/ck.5.js" async></script>
+  <form action="https://app.kit.com/forms/9327259/subscriptions" class="seva-form formkit-form newsletter-form" method="post" data-sv-form="9327259" data-uid="7b5e7d2e5a" data-format="inline" data-version="5">
+    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+    <div data-element="fields" class="newsletter-fields">
+      <input class="formkit-input" name="email_address" aria-label="Email" placeholder="Email" required type="email">
+      <input class="formkit-input" aria-label="First Name" name="fields[first_name]" placeholder="First name" type="text">
+      <button data-element="submit" class="formkit-submit">Subscribe</button>
+    </div>
+    <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
+  </form>
+</section>
+
+<footer class="page-footer">
+  <div class="footer-nav">
+    <a href="index.html">Overview</a>
+    <a href="highlights.html">Highlights</a>
+    <a href="agency-lessons.html">Agency Lessons</a>
+  </div>
+  <div class="footer-text">Holdco Lessons &middot; The Compounding Playbook &middot; <a href="https://peterkang.com" target="_blank">Peter Kang</a></div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  siteNav.classList.toggle('scrolled', window.scrollY > 100);
+}, { passive: true });
+</script>
+</body>
+</html>
