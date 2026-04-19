@@ -110,6 +110,8 @@
     display: flex;
     gap: 0;
     flex-shrink: 0;
+    width: 100px;
+    justify-content: center;
   }
 
   .library-card-cover {
@@ -119,11 +121,13 @@
   }
 
   .library-card-cover:first-child:not(:only-child) {
+    max-height: 85px;
     transform: rotate(-2deg) translateX(6px);
     z-index: 1;
   }
 
   .library-card-cover:last-child:not(:only-child) {
+    max-height: 85px;
     transform: rotate(2deg) translateX(-6px);
   }
 
