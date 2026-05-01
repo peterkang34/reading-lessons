@@ -2,7 +2,7 @@
 **By William N. Thorndike**
 *84 highlights organized by theme*
 
-The eight CEOs profiled in this book — Tom Murphy (Capital Cities), Henry Singleton (Teledyne), Bill Anders (General Dynamics), Warren Buffett (Berkshire Hathaway), Katharine Graham (Washington Post), John Malone (TCI), Dick Smith (General Cinema), and Bill Stiritz (Ralston Purina) — beat the S&P 500 by an average of 20x over very long tenures. They didn't have charisma, MBAs, or media friends. They had a shared mental model: capital allocation as the CEO's most important job, cash flow over reported earnings, decentralization at the operating level, and the discipline to act boldly when the math demanded it.
+The eight CEOs profiled in this book — Tom Murphy (Capital Cities), Henry Singleton (Teledyne), Bill Anders (General Dynamics), Warren Buffett (Berkshire Hathaway), Katharine Graham (Washington Post), John Malone (TCI), Dick Smith (General Cinema), and Bill Stiritz (Ralston Purina) — delivered extraordinary shareholder returns over twenty-plus year tenures. They didn't have charisma, MBAs, or media friends. They had a shared mental model: capital allocation as the CEO's most important job, cash flow over reported earnings, decentralization at the operating level, and the discipline to act boldly when the math demanded it.
 
 ---
 
