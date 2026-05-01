@@ -94,7 +94,91 @@ Each microsite should have at minimum:
 
 Add a card to `/reading-lessons/index.html` with the book cover and description.
 
-### Step 5: Deploy
+### Step 5: Accuracy audit (REQUIRED before commit)
+
+**This step is non-negotiable. Do not skip. Do not commit until every quote has been verified against the original Readwise highlights.**
+
+The risk: light editorial trims, dropped attributions, or fabricated specifics in the editorial prose can sneak in if the writer is working from memory or reconstructing quotes. The audit catches all three.
+
+#### 5.1 Re-pull and dedupe the source highlights
+
+Run a fresh batch of Readwise searches (8-15 queries with varied terms) and save the unique highlights to a temp file as JSON:
+
+```bash
+# After running searches, the MCP server saves each result to:
+# /Users/peterkang/.claude/projects/-Users-peterkang/<session>/tool-results/
+
+cd <tool-results-dir>
+jq -s '[.[].result[] | select(.attributes.document_title == "<EXACT TITLE>")] | unique_by(.id) | map(.attributes.highlight_plaintext)' mcp-claude_ai_Readwise-readwise_search_highlights-*.txt > /tmp/<book>-raw.json
+```
+
+#### 5.2 Run the audit script against the HTML files
+
+```bash
+cd /Users/peterkang/Desktop/reading-lessons/<microsite>
+python3 <<'PY'
+import json, re, html
+from pathlib import Path
+
+raw = json.load(open('/tmp/<book>-raw.json'))
+def normalize(s):
+    s = html.unescape(s)
+    s = s.replace('“','"').replace('”','"').replace('‘',"'").replace('’',"'")
+    s = s.replace('–','-').replace('—','-').replace('…','...')
+    s = re.sub(r'\s+', ' ', s).strip().lower()
+    return s
+
+haystack = ' \n '.join(normalize(q) for q in raw)
+files = ['index.html','highlights.html','holdco-lessons.html','agency-lessons.html']
+patterns = [r'class="quote-text">(.*?)</div>',
+            r'class="lesson-quote-text">(.*?)</div>',
+            r'class="big-quote-text">(.*?)</div>',
+            r'class="dual-quote-text">(.*?)</div>']
+total = 0; mismatches = []
+for f in files:
+    txt = Path(f).read_text()
+    for pat in patterns:
+        for m in re.finditer(pat, txt, re.DOTALL):
+            q_norm = normalize(m.group(1)).strip('"').strip("'").strip()
+            total += 1
+            found = False
+            for start in [0, 30, 60, max(0, len(q_norm)-80)]:
+                seg = q_norm[start:start+50]
+                if len(seg) >= 30 and seg in haystack:
+                    found = True; break
+            if not found:
+                mismatches.append((f, m.group(1)[:160]))
+print(f"Quotes: {total} | Mismatches: {len(mismatches)}")
+for f, q in mismatches:
+    print(f"  [{f}] {q}")
+PY
+```
+
+#### 5.3 Resolve every mismatch — three categories
+
+For each mismatch, classify and act:
+
+1. **Search coverage gap** (real quote, missed by initial pull). Run additional targeted Readwise searches with `full_text_queries` containing distinctive phrases from the quote. If found in Readwise, the quote is legitimate — leave it. Note this case is common; book pulls typically capture 85-95% of highlights, so a 5-15% gap on the first audit pass is normal.
+
+2. **Light editorial trim** (real quote, but condensed). Restore to exact source text. Trims include: dropped leading connectors ("In contrast,", "However,"), dropped attributions ("Don Clifford and Richard E. Cavanagh"), dropped example sentences ("In the case of Thrifty Drug..."), dropped closing clauses, removed footnote markers ("10", "11"), spelling normalization ("Ghandi" → "Gandhi"). The CLAUDE.md rule is explicit: *quotes are exact, never paraphrased.* Restore the dropped text.
+
+3. **Fabricated content** (cannot be found in Readwise after multiple targeted searches). Remove the quote. Replace with verifiable text from a real highlight, or delete the quote-card entirely. Never reconstruct a quote from memory.
+
+#### 5.4 Audit editorial prose for fabricated specifics
+
+Quote-text matching only catches falsified quotes. Fabricated *facts in editorial prose* (lesson bodies, intros, CEO cards, principle descriptions) need a separate pass. Common failure modes from prior audits:
+
+- **Made-up numerical specifics**: "beat the market by 20x" when the highlights only say "twenty-plus year tenures." "Bought ABC for $3.5B" when only the Disney sale price is in the highlights.
+- **Reframed actions**: "Bought GEICO" when the highlight says "first stock he recommended."
+- **Aggregated claims that aren't in the highlights**: "All eight reinvested 80%+ of cash flow at 20% ROIC" — verify each numeric claim has a supporting highlight.
+
+For each numeric figure, named transaction, and named action in the editorial prose, grep the raw highlights for the underlying claim. If it's not there, soften ("delivered exceptional returns") or remove.
+
+#### 5.5 Re-run the audit after fixes
+
+The audit script must report `Mismatches: 0` and the editorial-prose grep must find no unsupported specifics. Only then proceed to Step 6.
+
+### Step 6: Deploy
 
 ```bash
 cd /Users/peterkang/Desktop/reading-lessons
@@ -188,9 +272,12 @@ Add to every page, above the footer.
 ## Content Guidelines
 
 ### Book Quotes
-- Always exact text from Readwise. Never paraphrase.
-- HTML entities: `&ldquo;` `&rdquo;` for quotes, `&rsquo;` for apostrophes
-- Don't reference Readwise in public-facing content
+- Always exact text from Readwise. Never paraphrase. Never trim.
+- "Trim" includes: dropping leading connectors, dropped attributions, dropped example sentences, dropped closing clauses, removed footnote markers, condensed multi-paragraph passages. None of these are allowed. If the source has it, the page has it.
+- The only allowed change is HTML entity encoding: `&ldquo;` `&rdquo;` for quotes, `&rsquo;` for apostrophes, `&mdash;` for em dashes inside quotes.
+- Spelling errors in the source (e.g., "Ghandi") stay as-is — they belong to the original. Do not "fix" them.
+- Don't reference Readwise in public-facing content.
+- Step 5 of the workflow (accuracy audit) is the enforcement mechanism. Run it before every commit.
 
 ### Applied Lessons Pages
 - Don't directly quote from Peter's blog posts (snapshots in time)
@@ -212,7 +299,9 @@ Run this before committing and pushing any changes.
 
 ### Content
 - [ ] All editorial prose passes the voice filter
-- [ ] Book quotes are exact (not paraphrased)
+- [ ] **Accuracy audit script run and reports 0 mismatches** (Step 5.2)
+- [ ] **All editorial prose specifics (numbers, transaction names, named actions) verified against raw highlights** (Step 5.4)
+- [ ] Book quotes are exact, never trimmed or paraphrased
 - [ ] No Readwise references in public-facing content
 - [ ] Quote-to-lesson connections are clear
 - [ ] Roughly balanced source representation across applied lessons
