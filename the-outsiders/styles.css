@@ -8,10 +8,10 @@
 
 /* ── COLOR OVERRIDES ── */
 :root {
-  --accent: #7A1F2B;
-  --accent-light: #B5404D;
-  --accent-glow: rgba(122,31,43,0.08);
-  --accent-glow-strong: rgba(122,31,43,0.15);
+  --accent: #1B7A85;
+  --accent-light: #3FA8B3;
+  --accent-glow: rgba(27,122,133,0.08);
+  --accent-glow-strong: rgba(27,122,133,0.15);
 }
 
 /* ── HERO RADIAL GRADIENT ── */
@@ -20,8 +20,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 35% 30%, rgba(122,31,43,0.32) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 60%, rgba(181,64,77,0.18) 0%, transparent 50%);
+    radial-gradient(ellipse at 35% 30%, rgba(27,122,133,0.34) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(63,168,179,0.20) 0%, transparent 50%);
 }
 
 /* ── QUOTE CARD HOVER ── */
