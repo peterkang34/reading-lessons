@@ -96,31 +96,27 @@ Add a card to `/reading-lessons/index.html` with the book cover and description.
 
 ### Step 5: Accuracy audit (REQUIRED before commit)
 
-**This step is non-negotiable. Do not skip. Do not commit until every quote has been verified against the original Readwise highlights.**
+**The standard is anti-hallucination, not anti-edit.** Every quote must be derivable from a real highlight in the research `.md` (no invented words, no fake attributions, no fictional speakers). Light condensing for readability — dropping a leading connector, a footnote marker, a tangential example — is fine. Fabricating content is not.
 
-The risk: light editorial trims, dropped attributions, or fabricated specifics in the editorial prose can sneak in if the writer is working from memory or reconstructing quotes. The audit catches all three.
+The same rule applies to editorial prose: every numeric figure, transaction, named action must be traceable to a real highlight or removed.
 
-#### 5.1 Re-pull and dedupe the source highlights
+#### 5.1 Use the local `.md` as the source of truth (do NOT re-pull from Readwise)
 
-Run a fresh batch of Readwise searches (8-15 queries with varied terms) and save the unique highlights to a temp file as JSON:
+Step 2 of this workflow already produced `{book-slug}.md` — a research file containing every highlight pulled fresh from Readwise. That file is the audit source. Re-pulling via the MCP is slow, expensive, and unnecessary; the `.md` was the canonical extract at the time the microsite was built.
 
-```bash
-# After running searches, the MCP server saves each result to:
-# /Users/peterkang/.claude/projects/-Users-peterkang/<session>/tool-results/
-
-cd <tool-results-dir>
-jq -s '[.[].result[] | select(.attributes.document_title == "<EXACT TITLE>")] | unique_by(.id) | map(.attributes.highlight_plaintext)' mcp-claude_ai_Readwise-readwise_search_highlights-*.txt > /tmp/<book>-raw.json
-```
+If the `.md` is missing, stale, or you suspect it dropped highlights during the original pull, only then re-pull. Otherwise, work from the file you already have.
 
 #### 5.2 Run the audit script against the HTML files
 
 ```bash
 cd /Users/peterkang/Desktop/reading-lessons/<microsite>
 python3 <<'PY'
-import json, re, html
+import re, html
 from pathlib import Path
 
-raw = json.load(open('/tmp/<book>-raw.json'))
+# Use the local research markdown as the source of truth
+md = Path('<book-slug>.md').read_text()
+
 def normalize(s):
     s = html.unescape(s)
     s = s.replace('“','"').replace('”','"').replace('‘',"'").replace('’',"'")
@@ -128,7 +124,7 @@ def normalize(s):
     s = re.sub(r'\s+', ' ', s).strip().lower()
     return s
 
-haystack = ' \n '.join(normalize(q) for q in raw)
+haystack = normalize(md)
 files = ['index.html','highlights.html','holdco-lessons.html','agency-lessons.html']
 patterns = [r'class="quote-text">(.*?)</div>',
             r'class="lesson-quote-text">(.*?)</div>',
@@ -141,6 +137,7 @@ for f in files:
         for m in re.finditer(pat, txt, re.DOTALL):
             q_norm = normalize(m.group(1)).strip('"').strip("'").strip()
             total += 1
+            # check multiple anchor positions — survives light trims
             found = False
             for start in [0, 30, 60, max(0, len(q_norm)-80)]:
                 seg = q_norm[start:start+50]
@@ -154,25 +151,27 @@ for f, q in mismatches:
 PY
 ```
 
-#### 5.3 Resolve every mismatch — three categories
+The script uses **anchor matching at multiple positions in the quote** — so a quote that drops a leading connector or a closing clause still matches if the middle survives. That's intentional. Light condensing passes the audit. Fabricated content does not.
 
-For each mismatch, classify and act:
+#### 5.3 Resolve every mismatch
 
-1. **Search coverage gap** (real quote, missed by initial pull). Run additional targeted Readwise searches with `full_text_queries` containing distinctive phrases from the quote. If found in Readwise, the quote is legitimate — leave it. Note this case is common; book pulls typically capture 85-95% of highlights, so a 5-15% gap on the first audit pass is normal.
+A mismatch means *no anchor of the quote was found in the research `.md`*. Two real causes:
 
-2. **Light editorial trim** (real quote, but condensed). Restore to exact source text. Trims include: dropped leading connectors ("In contrast,", "However,"), dropped attributions ("Don Clifford and Richard E. Cavanagh"), dropped example sentences ("In the case of Thrifty Drug..."), dropped closing clauses, removed footnote markers ("10", "11"), spelling normalization ("Ghandi" → "Gandhi"). The CLAUDE.md rule is explicit: *quotes are exact, never paraphrased.* Restore the dropped text.
+1. **Coverage gap in the original pull** — the quote is real, but the Step 1 Readwise pull missed it (typical 85-95% recovery). Verify by searching Readwise directly with `full_text_queries` for a distinctive phrase. If found, the quote is legitimate — optionally append the rediscovered highlight to the `.md` so the next audit catches it.
 
-3. **Fabricated content** (cannot be found in Readwise after multiple targeted searches). Remove the quote. Replace with verifiable text from a real highlight, or delete the quote-card entirely. Never reconstruct a quote from memory.
+2. **Fabricated content** — quote does not exist in Readwise. Remove the quote-card or replace it with a verifiable highlight. Never reconstruct from memory.
+
+There is *no* category for "light trim." Trims are fine and don't trigger mismatches because the script's anchor matching tolerates them.
 
 #### 5.4 Audit editorial prose for fabricated specifics
 
-Quote-text matching only catches falsified quotes. Fabricated *facts in editorial prose* (lesson bodies, intros, CEO cards, principle descriptions) need a separate pass. Common failure modes from prior audits:
+Quote matching only catches falsified quotes. Fabricated facts in editorial prose (lesson bodies, intros, CEO cards, principle descriptions) need a separate pass. Common failure modes from prior audits:
 
 - **Made-up numerical specifics**: "beat the market by 20x" when the highlights only say "twenty-plus year tenures." "Bought ABC for $3.5B" when only the Disney sale price is in the highlights.
 - **Reframed actions**: "Bought GEICO" when the highlight says "first stock he recommended."
 - **Aggregated claims that aren't in the highlights**: "All eight reinvested 80%+ of cash flow at 20% ROIC" — verify each numeric claim has a supporting highlight.
 
-For each numeric figure, named transaction, and named action in the editorial prose, grep the raw highlights for the underlying claim. If it's not there, soften ("delivered exceptional returns") or remove.
+For each numeric figure, named transaction, and named action in the editorial prose, grep the `.md` for the underlying claim. If it's not there, soften ("delivered exceptional returns") or remove.
 
 #### 5.5 Re-run the audit after fixes
 
@@ -272,12 +271,12 @@ Add to every page, above the footer.
 ## Content Guidelines
 
 ### Book Quotes
-- Always exact text from Readwise. Never paraphrase. Never trim.
-- "Trim" includes: dropping leading connectors, dropped attributions, dropped example sentences, dropped closing clauses, removed footnote markers, condensed multi-paragraph passages. None of these are allowed. If the source has it, the page has it.
-- The only allowed change is HTML entity encoding: `&ldquo;` `&rdquo;` for quotes, `&rsquo;` for apostrophes, `&mdash;` for em dashes inside quotes.
-- Spelling errors in the source (e.g., "Ghandi") stay as-is — they belong to the original. Do not "fix" them.
+- The standard is **anti-hallucination, not anti-edit**. Every quote must be derivable from a real highlight in the `.md`. No invented words, no fake attributions, no fictional speakers.
+- **Light condensing for readability is fine.** Drop a leading connector, a footnote marker ("10", "11"), a tangential example, an attribution if it gets in the way of flow. The goal is browsability — a wall of full passages buries the insight.
+- **What's not fine**: inventing words the source doesn't contain, putting a quote in the wrong person's mouth, combining two unrelated passages into one fake quote, fabricating a number or transaction that isn't in the source.
+- Use HTML entities: `&ldquo;` `&rdquo;` for quotes, `&rsquo;` for apostrophes, `&mdash;` inside quotes.
 - Don't reference Readwise in public-facing content.
-- Step 5 of the workflow (accuracy audit) is the enforcement mechanism. Run it before every commit.
+- Step 5 of the workflow (accuracy audit) catches fabrications. Run it before every commit.
 
 ### Applied Lessons Pages
 - Don't directly quote from Peter's blog posts (snapshots in time)
