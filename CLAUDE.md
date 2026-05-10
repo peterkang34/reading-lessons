@@ -88,7 +88,12 @@ Description of theme.
 Each microsite should have at minimum:
 - **Overview/index page** with intro, core principles, and navigation to sub-pages
 - **Highlights page** with sidebar navigation and all quotes organized by theme
-- **Applied lessons page(s)** connecting the book's ideas to holdcos and/or agencies
+- **Agency lessons page** — translates the book to individual agency operating principles. Always include this; the translation distance from any business book to an agency context adds real value.
+
+Optionally:
+- **Holdco lessons page** — only include when the source book is *not* itself a holdco book. For books like ALDI/Trader Joe's (operating retailers) or other operating-company books, holdco-lessons does meaningful translation. For books like The Outsiders or The Compounders, which are already about capital allocation at the parent-company level, a holdco-lessons page mostly restates the book's thesis and adds little. Skip it.
+
+The judgment call: does extracting "lessons for holdcos" from this book require a translation step, or is the book already at that altitude?
 
 ### Step 4: Update the library page
 
