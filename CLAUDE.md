@@ -95,6 +95,37 @@ Optionally:
 
 The judgment call: does extracting "lessons for holdcos" from this book require a translation step, or is the book already at that altitude?
 
+#### Writing the agency lessons
+
+Three principles, learned the hard way:
+
+**1. Default to agency-type-agnostic vocabulary.** The reader's portfolio skews implementation-heavy (UX, data, Amazon, platform implementation, B2B SaaS services) — not creative or ad shops. Don't assume awards, trade press, creative directors, brand systems, or campaigns are universal vocabulary. When picking examples:
+- *Universal*: RFPs, AR days, scope creep, account leads, niche pivot, retainers, utilization, non-billable count, partner/founder economics
+- *Creative-shop only*: awards, trade press, brand systems, creative director, campaign-as-outcome
+- *Tech/platform-agency only*: partner-tier badges (Shopify Plus, AWS, Salesforce), platform certifications, ROAS, conversion lift, adoption metrics
+
+When you must use a category-specific example, either pick one that spans agency types or explicitly contrast both ("creative shops chase X; tech and platform agencies chase Y").
+
+**2. Apply the honesty test: does the analogy actually hold?** The source book's CEOs ran specific kinds of businesses with specific dynamics. Some patterns transfer cleanly to agencies (capital allocation discipline, decentralization, niche dominance, cash culture, frugality signals). Some don't.
+
+The Outsider CEOs' aversion to publicity is the canonical example of an analogy that breaks: their companies' buyers came to them. Agencies are service businesses that live on top-of-funnel — writing, talks, podcasts. "Don't seek the spotlight" is bad advice for an agency owner. The honest reframe was to identify what *does* transfer (audience discipline: be known by buyers, not by peers).
+
+When the analogy breaks down, name the gap explicitly in the lesson body, then reframe around what survives. Don't paper it over with vague platitudes — readers dismiss those as glib, and the writer feels like a hypocrite.
+
+**3. Lesson titles use language an agency owner actually speaks.** Bad titles borrow public-company or corporate vocabulary that creates a translation gap before the reader gets to the body:
+- "Optimize for value per share" → public-company language; agencies don't have shares
+- "Decentralize at the team level" → corporate-speak; not visceral
+- "Stay independent, stay rational" → vague; could mean anything
+
+Good titles are visceral, agency-native, and predict the lesson:
+- "Headcount is a vanity metric, not a scoreboard"
+- "The founder is the ceiling"
+- "Be known by buyers, not by peers"
+- "Awards don't pay payroll" *(if you know the audience runs creative shops; otherwise broaden)*
+- "Build for the decade-long client, not the next project"
+
+The test: would an agency owner reading the title know roughly what the lesson is about?
+
 ### Step 4: Update the library page
 
 Add a card to `/reading-lessons/index.html` with the book cover and description.
@@ -162,7 +193,7 @@ The script uses **anchor matching at multiple positions in the quote** — so a 
 
 A mismatch means *no anchor of the quote was found in the research `.md`*. Two real causes:
 
-1. **Coverage gap in the original pull** — the quote is real, but the Step 1 Readwise pull missed it (typical 85-95% recovery). Verify by searching Readwise directly with `full_text_queries` for a distinctive phrase. If found, the quote is legitimate — optionally append the rediscovered highlight to the `.md` so the next audit catches it.
+1. **Coverage gap in the original pull** — the quote is real, but the Step 1 Readwise pull missed it (typical 85-95% recovery). Verify by searching Readwise directly with `full_text_queries` for a distinctive phrase. If found, the quote is legitimate — **append the rediscovered highlight to the `.md`**. Not optional. If you skip this, the next audit will surface the same mismatches and someone will redo the verification work. (We learned this the hard way: the Compounders microsite ran two audits months apart, both flagging the same 13 real-but-missing highlights, because we never appended.)
 
 2. **Fabricated content** — quote does not exist in Readwise. Remove the quote-card or replace it with a verifiable highlight. Never reconstruct from memory.
 
