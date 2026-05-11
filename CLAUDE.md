@@ -310,13 +310,9 @@ Add to every page, above the footer.
 - The standard is **anti-hallucination, not anti-edit**. Every quote must be derivable from a real highlight in the `.md`. No invented words, no fake attributions, no fictional speakers.
 - **Light condensing for readability is fine.** Drop a leading connector, a footnote marker ("10", "11"), a tangential example, an attribution if it gets in the way of flow. The goal is browsability — a wall of full passages buries the insight.
 - **What's not fine**: inventing words the source doesn't contain, putting a quote in the wrong person's mouth, combining two unrelated passages into one fake quote, fabricating a number or transaction that isn't in the source.
-- **Readwise is the only source.** If it's not in your `.md` (or findable in Readwise via a coverage-gap re-search per Step 5.3), it does not go on the page. Specifically banned:
-  - Pulling quotes from a PDF or ebook in the project folder, even if one exists. (The Compounders folder has one — don't use it. The PDF bypasses the Readwise → `.md` provenance chain that the audit relies on.)
-  - Web-searching for additional book quotes.
-  - Recalling quotes from training data or model knowledge of the book. You may know the book; that doesn't make your recollection a real highlight.
-  - Synthesizing a "representative" quote from two unrelated highlights.
-  - Asking the model to write a quote in the style of [author].
-- If you want to make a thematic point but Readwise doesn't have a highlight that supports it, **cut the point** — don't manufacture a quote. The microsite is honest about what the highlights actually say. That honesty is the product.
+- **Readwise is the default source. Don't supplement unilaterally.** If a quote isn't in your `.md` (or findable in Readwise via a coverage-gap re-search per Step 5.3), don't reach for it from somewhere else without explicit user approval. Specifically: don't default to a PDF/ebook in the project folder (the Compounders folder has one), don't web-search for additional quotes, don't recall from training data, don't synthesize a "representative" quote from two unrelated highlights, don't write a quote in the style of the author. The Readwise → `.md` provenance chain is what makes the audit trustworthy; bypassing it silently breaks that.
+- The user can explicitly authorize other sources ("pull this quote from the PDF," "check the web for X"). That's fine — and the audit script won't catch those quotes as mismatches because they're approved supplements. Just don't introduce them on your own.
+- If you want to make a thematic point but Readwise doesn't support it and the user hasn't approved another source, **cut the point** — don't manufacture a quote. The microsite is honest about what the highlights actually say. That honesty is the product.
 - Use HTML entities: `&ldquo;` `&rdquo;` for quotes, `&rsquo;` for apostrophes, `&mdash;` inside quotes.
 - Don't reference Readwise in public-facing content.
 - Step 5 of the workflow (accuracy audit) catches fabrications. Run it before every commit.
